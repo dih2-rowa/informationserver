@@ -1,4 +1,4 @@
-# <TITLE>
+# Information Server
 
 [![License: MIT](https://img.shields.io/github/license/ramp-eu/TTE.project1.svg)](https://opensource.org/licenses/MIT)
 [![Docker badge](https://img.shields.io/docker/pulls/ramp-eu/TTE.project1.svg)](https://hub.docker.com/r/<org>/<repo>/)
@@ -43,6 +43,29 @@ One or two sentence preamble describing the element
   - [API](#api)
   - [Testing](#testing)
   - [License](#license)
+
+## Test NGSI V2 API with VS code and docker desktop
+### VScode Extensions used
+ - Name: REST Client
+    Id: humao.rest-client
+    Description: REST Client for Visual Studio Code
+    Version: 0.24.6
+    Publisher: Huachao Mao
+    VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+ - Name: Docker
+    Id: ms-azuretools.vscode-docker
+    Description: Makes it easy to create, manage, and debug containerized applications.
+    Version: 1.21.0
+    Publisher: Microsoft
+    VS Marketplace Link: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker
+
+### Example
+- Start Docker Desktop
+- Open VS code
+- Right Click to [docker-compose_orion-minimal.yaml](docker\docker-compose\test\docker-compose_orion-minimal.yml)
+  - *Compose Up*
+- Send Requests from [example_walkthrough_apiv2.http](docker\docker-compose\test\example_walkthrough_apiv2.http)
+
 
 ## Background
 
