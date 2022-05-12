@@ -1,4 +1,4 @@
-from Models.Robot import Robot
+from Models.robots import Robot
 
 # implementing the service-pattern for better testing
 class RobotService:

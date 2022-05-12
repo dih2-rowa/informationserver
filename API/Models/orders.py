@@ -1,5 +1,7 @@
 
+from datetime import datetime, timedelta
 from flask import jsonify
+
 
 
 from .base import BaseModel
@@ -15,10 +17,15 @@ Base = declarative.declarative_base(bind=BaseModel().engine)
 class Order(BaseModel,Base ):
     #Defenition of the table which is created in the CrateDB
     __tablename__ = 'orders'
-    id = sa.Column(sa.String, primary_key=True, default=BaseModel.gen_key)
-    description = sa.Column(sa.String)
-    finished = sa.Column(sa.Boolean)
-    product_id = sa.Column(sa.String)
+    id = sa.Column(sa.String, primary_key=True)
+    planParts = sa.Column(sa.Integer)
+    prodParts = sa.Column(sa.Integer, nullable=False)
+    startTime = sa.Column(sa.DateTime)
+    finishedTime = sa.Column(sa.DateTime)
+    deadline = sa.Column(sa.DateTime)
+    orderStatus = sa.Column(sa.String, nullable=False)
+    workingStation = sa.Column(sa.String, nullable=False)
+    product_id = sa.Column(sa.String,nullable=False)
     
 
     def __init__(self):
@@ -30,11 +37,15 @@ class Order(BaseModel,Base ):
     #adding sample data to db (only for tesing purposes)
     def add(self):
         order = Order()
-        order.description = "Auftrag 2"
-        order.finished = True
-        order.product_id = 'c1746d62-6475-4952-b656-51a3deaf5279'
+        order.id = 'Ordernumber 01'
+        order.product_id = 'Blasius3'
+        order.planParts = 10000
+        order.prodParts = 1643
+        order.startTime = datetime.now();
+        order.deadline = datetime.now() + timedelta(days=2)
+        order.orderStatus = 'Running'
+        order.workingStation = 'Robot01'
         self.session.add(order)
-        print('Going here')
         self.session.commit()
     
     def get_all(self):

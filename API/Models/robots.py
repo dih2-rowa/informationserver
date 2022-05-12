@@ -8,11 +8,15 @@ Base = declarative.declarative_base(bind=BaseModel().engine)
 
 class Robot(BaseModel,Base ):
     __tablename__ = 'robots'
-    id = sa.Column(sa.String, primary_key=True, default=BaseModel.gen_key)
-    program_version = sa.Column(sa.String)
+    id = sa.Column(sa.String, primary_key=True)
+    robotRunning = sa.Column(sa.Boolean, nullable=False)
+    robotSpeed = sa.Column(sa.Integer)
+    currCycleTime = sa.Column(sa.Integer)
+    drawer1Status = sa.Column(sa.String)
+    drawer2Status = sa.Column(sa.String)
+    restServiceLife = sa.Column(sa.Integer, nullable=False)
 
     def __init__(self):
-        
         super().__init__()
         Base.metadata.create_all()
 
@@ -20,7 +24,13 @@ class Robot(BaseModel,Base ):
 
     def add(self):
         robot = Robot()
-        robot.program_version = "1.1.5.8"
+        robot.id = 'Robot02'
+        robot.robotRunning = True
+        robot.robotSpeed = 90
+        robot.currCycleTime = 34
+        robot.drawer1Status = 'Raw part'
+        robot.drawer2Status = 'Processed part'
+        robot.restServiceLife = 30000
         self.session.add(robot)
         self.session.commit()
     

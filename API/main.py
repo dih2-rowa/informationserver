@@ -6,7 +6,7 @@ from Models.orders import Order
 from Models.products import Product
 
 from services.robotService import RobotService
-from Models.Robot import Robot
+from Models.robots import Robot
 
 
 app = Flask(__name__)
