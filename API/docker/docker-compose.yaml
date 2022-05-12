@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  cratedb:
+    image: crate:latest
+    ports:
+      - "4200:4200"
+    volumes:
+      - /tmp/crate/01:/data
+    command: ["crate",
+              "-Ccluster.name=crate-docker-cluster",
+              "-Cnode.name=cratedb",
+              "-Cnode.data=true",
+              "-Cnetwork.host=_site_"]
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    environment:
+      - CRATE_HEAP_SIZE=2g
+
+  
