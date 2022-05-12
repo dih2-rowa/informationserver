@@ -1,5 +1,6 @@
 from Models.Robot import Robot
 
+# implementing the service-pattern for better testing
 class RobotService:
     def __init__(self):
         self.model = Robot()

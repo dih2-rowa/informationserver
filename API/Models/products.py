@@ -18,12 +18,7 @@ class Product(BaseModel,Base ):
     process_length = sa.Column(sa.String)
     shall_cycle_time = sa.Column(sa.TIMESTAMP)
 
-    
-    def as_dict(self):
-        return {c.name: getattr(self, c.program_version) for c in self.__table__.columns}
-
     def __init__(self):
-        
         super().__init__()
         Base.metadata.create_all()
 

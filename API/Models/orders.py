@@ -13,6 +13,7 @@ from crate.client.sqlalchemy import types
 Base = declarative.declarative_base(bind=BaseModel().engine)
 
 class Order(BaseModel,Base ):
+    #Defenition of the table which is created in the CrateDB
     __tablename__ = 'orders'
     id = sa.Column(sa.String, primary_key=True, default=BaseModel.gen_key)
     description = sa.Column(sa.String)
@@ -20,17 +21,13 @@ class Order(BaseModel,Base ):
     product_id = sa.Column(sa.String)
     
 
-    
-    def as_dict(self):
-        return {c.name: getattr(self, c.program_version) for c in self.__table__.columns}
-
     def __init__(self):
-        
         super().__init__()
+        #if tables don't exists in the db --> create them
         Base.metadata.create_all()
 
 
-
+    #adding sample data to db (only for tesing purposes)
     def add(self):
         order = Order()
         order.description = "Auftrag 2"

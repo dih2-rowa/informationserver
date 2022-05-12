@@ -1,5 +1,6 @@
 from Models.products import Product
 
+# implementing the service-pattern for better testing
 class ProductService:
     def __init__(self):
         self.model = Product()

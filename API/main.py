@@ -10,6 +10,7 @@ from Models.Robot import Robot
 
 
 app = Flask(__name__)
+# CORS is only needed if a website requests data from the api
 cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 @app.route("/api", methods=["GET"])

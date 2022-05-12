@@ -1,9 +1,6 @@
-
-from flask import jsonify
 from .base import BaseModel
 import sqlalchemy as sa 
 from sqlalchemy.ext import declarative
-from crate.client.sqlalchemy import types
 
 
 
@@ -14,12 +11,7 @@ class Robot(BaseModel,Base ):
     id = sa.Column(sa.String, primary_key=True, default=BaseModel.gen_key)
     program_version = sa.Column(sa.String)
 
-    
-    def as_dict(self):
-        return {c.name: getattr(self, c.program_version) for c in self.__table__.columns}
-
     def __init__(self):
-        print('I am here')
         
         super().__init__()
         Base.metadata.create_all()
