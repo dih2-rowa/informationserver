@@ -1,0 +1,71 @@
+@import "../../styles/variables.scss";
+.search {
+    float: right;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+    position: relative;
+    width: fit-content;
+    & input {
+        border-radius: 1000rem;
+        border: none;
+        background-color: #F4F4F4;
+        padding: 1rem 3.5rem;
+        &::placeholder {
+            font-size: 2.2rem;
+            font-family: $font-secondary;
+            color: $color-text 50%;
+        }
+    }
+    & svg {
+        position: absolute;
+        right: 2rem;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.product-table {
+    margin-top: 5rem;
+    width: 100%;
+    text-align: left;
+    font-size: 1.8rem;
+    font-family: $font-secondary;
+    border-collapse: collapse;
+    thead {
+        background-color: #F4F4F4;
+        tr {
+            height: 5rem;
+            th {
+                font-weight: 100;
+                &.th-pdf {
+                    text-align: center;
+                }
+            }
+        }
+    }
+    tbody {
+        tr {
+            height: 5rem;
+            &:nth-child(even) {
+                background-color: #F4F4F4;
+            }
+            th {
+                font-weight: 100;
+                &.th-pdf {
+                    text-align: center;
+                    & svg :hover {
+                        cursor: pointer;
+                    }
+                }
+                &.triangle {
+                    &:hover {
+                        cursor: pointer;
+                    }
+                    & svg {
+                        padding: 1rem;
+                    }
+                }
+            }
+        }
+    }
+}

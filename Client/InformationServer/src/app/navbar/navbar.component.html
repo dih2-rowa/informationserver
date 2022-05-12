@@ -1,0 +1,22 @@
+<section class="navigation">
+    <div class="nav-container">
+        <div class="brand">
+            <a routerLink="">Robosonic</a>
+        </div>
+        <nav>
+            <div class="nav-mobile">
+                <a id="nav-toggle" href="#!" (click)="toggleBurgerMenu = ! toggleBurgerMenu;" [ngClass]="{active: toggleBurgerMenu}"><span></span></a></div>
+            <ul class="nav-list" [ngClass]="{active: toggleBurgerMenu}">
+                <li>
+                    <a routerLink="/robots" routerLinkActive="nav-active">Roboter</a>
+                </li>
+                <li>
+                    <a routerLink="/products" routerLinkActive="nav-active">Produktinformationen</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>

@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+.robot-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    .robot {
+        width: 59rem;
+        border: 2px solid #9a9a9a;
+        margin-top: 1rem;
+        // padding: .5rem 3rem;
+        & .header {
+            font-size: 2.2rem;
+            text-align: center;
+        }
+        & .details-section {
+            margin: 3rem 0;
+            font-size: 1.6rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            grid-gap: 1rem;
+            & .detail {
+                padding: 0rem 3rem;
+                display: flex;
+                justify-content: space-between;
+                & p {
+                    margin: 0;
+                    &.info {
+                        float: right
+                    }
+                }
+            }
+        }
+        &:hover {
+            cursor: pointer;
+            border: 2px solid $primary-color;
+            transform: translateY(-4px);
+        }
+        transition: transform .2s;
+    }
+}
