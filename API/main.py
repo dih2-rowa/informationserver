@@ -1,22 +1,4 @@
-# from Models.Robot import Robot
-# from Models.base import BaseModel
-# from flask import Flask, request, jsonify
-# from models import Schema
-
-# app = Flask(__name__)
-
-# @app.route("/todo",methods = ["POST"])
-# def create_todo():
-#     return TodoService().create(request.get_json())
-    
-
-
-# if __name__ == "__main__":
-#     Schema()
-#     app.run(debug=True)
-
-from crypt import methods
-from flask import Flask, jsonify,request
+from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
 from services.productService import ProductService
 

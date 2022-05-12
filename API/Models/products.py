@@ -1,16 +1,6 @@
-
-
-from xmlrpc.client import DateTime
-from flask import jsonify
-
-
-
 from .base import BaseModel
 import sqlalchemy as sa 
 from sqlalchemy.ext import declarative
-from sqlalchemy.orm import relationship
-from sqlalchemy import ForeignKey
-from crate.client.sqlalchemy import types
 from datetime import datetime
 from Models.orders import Order
 
@@ -27,7 +17,6 @@ class Product(BaseModel,Base ):
     program_name = sa.Column(sa.String)
     process_length = sa.Column(sa.String)
     shall_cycle_time = sa.Column(sa.TIMESTAMP)
-    # orders = relationship('Order',backref='product')
 
     
     def as_dict(self):
@@ -55,11 +44,7 @@ class Product(BaseModel,Base ):
     
     def get_all(self):
         query = f'select * from {self.__tablename__}'
-        # query = f'select * from robots'
-        # return self.session.execute(query).fetchall()
         res = self.session.execute(query).fetchall()
         return self.toDict(res)
-
-        # return self.session.execute(query).all()
         
         

@@ -28,9 +28,6 @@ class Order(BaseModel,Base ):
         
         super().__init__()
         Base.metadata.create_all()
-        # print('I am creating the table now')
-       
-        # print('I  the table now')
 
 
 
@@ -39,20 +36,13 @@ class Order(BaseModel,Base ):
         order.description = "Auftrag 2"
         order.finished = True
         order.product_id = 'c1746d62-6475-4952-b656-51a3deaf5279'
-
-        # self.baseModel.session.add(robot)
-        # self.baseModel.session.commit()
         self.session.add(order)
         print('Going here')
         self.session.commit()
     
     def get_all(self):
         query = f'select * from {self.__tablename__}'
-        # query = f'select * from robots'
-        # return self.session.execute(query).fetchall()
         res = self.session.execute(query).fetchall()
         return self.toDict(res)
-
-        # return self.session.execute(query).all()
         
         

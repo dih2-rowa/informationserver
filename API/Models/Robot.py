@@ -23,27 +23,18 @@ class Robot(BaseModel,Base ):
         
         super().__init__()
         Base.metadata.create_all()
-        # print('I am creating the table now')
-       
-        # print('I  the table now')
 
 
 
     def add(self):
         robot = Robot()
         robot.program_version = "1.1.5.8"
-        # self.baseModel.session.add(robot)
-        # self.baseModel.session.commit()
         self.session.add(robot)
         self.session.commit()
     
     def get_all(self):
         query = f'select * from {self.__tablename__}'
-        # query = f'select * from robots'
-        # return self.session.execute(query).fetchall()
         res = self.session.execute(query).fetchall()
         return self.toDict(res)
-
-        # return self.session.execute(query).all()
         
         
