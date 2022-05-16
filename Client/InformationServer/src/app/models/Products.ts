@@ -1,10 +1,21 @@
 import { Time } from "@angular/common";
+import { Orders } from "./Orders";
 
 export interface Product{
     id:string;
-    program_name : string;
-    program_version: string;
-    finished: boolean;
-    process_length: string;
-    shall_cycle_time: Time;
+    programName : string;
+    programVersion: number;
+    versionOnRobot : boolean;
+    processingLength: number;
+    planCycleTime: number;
+    ordersTodo: Orders[];
+    ordersFinished: Orders[];
+    orderRunning: Orders;
+}
+
+export interface ProductPage{
+    product:Product;
+    runningOrder: Orders;
+    pendingOrders: Orders[];
+    finishedOrders:Orders[];
 }

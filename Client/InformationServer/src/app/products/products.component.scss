@@ -58,6 +58,7 @@
                     }
                 }
                 &.triangle {
+                    transition: all .2s;
                     &:hover {
                         cursor: pointer;
                     }
@@ -65,7 +66,63 @@
                         padding: 1rem;
                     }
                 }
+                &.triangle-open {
+                    & svg {
+                        transform: rotate(90deg);
+                        padding: 1rem;
+                        cursor: pointer;
+                        transition: all .2s;
+                    }
+                }
             }
         }
+    }
+}
+
+.fold {
+    display: none;
+    &-open {
+        display: table-row;
+        transition: all cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+    & .order-overview {
+        position: relative;
+        & .order-todo {
+            display: inline-block;
+            margin-left: 15%;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+        & .runningOrder {
+            margin-top: 1rem;
+            text-align: center;
+            & .labelDescription {
+                font-weight: bold;
+            }
+        }
+    }
+    & .line {
+        position: absolute;
+        top: 35%;
+        left: 50%;
+        right: 50%;
+        display: inline;
+        border: 2px solid #a4a4a48b;
+        bottom: 10%;
+        height: inherit;
+        border-radius: 100rem;
+    }
+    & .order-completed {
+        // display: inline-block;
+        float: right;
+        // border: 1px solid #000;
+        margin-right: 15%;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+    & ul {
+        margin: 0 0 0 2rem;
+        padding: 0;
+        list-style: none;
     }
 }

@@ -1,5 +1,9 @@
+from cProfile import run
+import json
 from flask import Flask, jsonify
 from flask_cors import CORS, cross_origin
+from Models.ProductPage import Productpage
+from services.orderService import OrderService
 from services.productService import ProductService
 
 from Models.orders import Order
@@ -7,6 +11,8 @@ from Models.products import Product
 
 from services.robotService import RobotService
 from Models.robots import Robot
+
+from Models.enums import OrderStatus
 
 
 app = Flask(__name__)
@@ -36,16 +42,50 @@ def get_robots():
     print(response)
     return response
 
-@app.route("/api/order/add", methods=['GET'])
+@app.route("/api/orders/add", methods=['GET'])
 @cross_origin()
 def add_order():
     Order().add()
     return 'Added new Order'
 
-@app.route('/api/product/all')
+@app.route("/api/orders/all")
+def get_orders():
+    return jsonify(OrderService().getOrders())
+
+@app.route('/api/products/all')
 @cross_origin()
 def get_products():
     return jsonify((ProductService().getProducts()))
+
+@app.route('/api/products/page')
+def get_products_page():
+    # get all products and orders
+    products = ProductService().getProducts()
+    orders = OrderService().getOrders()
+    # orders = orders.items()
+    productpage = []
+    # print(orders)
+
+    for product in products:
+        finishedorders = []
+        pendingorders = []
+        runningOrder = {}
+        for order in orders:
+            print(order)
+            if order['product_id'] == product['id']:
+                if order['orderStatus'] == 'Finished':
+                    finishedorders.append(order)
+                elif order['orderStatus'] == 'Pending':
+                    pendingorders.append(order)
+                elif order['orderStatus'] == 'Running':
+                    runningOrder = order
+        productpage.append(Productpage(product=product,finishedOrders=finishedorders, pendingOrders=pendingorders, runningOrder=runningOrder).serialize())
+    print(jsonify(productpage))
+    return jsonify(productpage)
+
+
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)
