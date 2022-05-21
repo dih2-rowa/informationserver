@@ -1,6 +1,7 @@
 from cProfile import run
 import json
-from flask import Flask, jsonify
+from urllib.request import Request
+from flask import Flask, jsonify, request, send_file, send_from_directory
 from flask_cors import CORS, cross_origin
 from Models.ProductPage import Productpage
 from services.orderService import OrderService
@@ -55,7 +56,10 @@ def get_orders():
 @app.route('/api/products/all')
 @cross_origin()
 def get_products():
-    return jsonify((ProductService().getProducts()))
+    products = ProductService().getProducts()
+    for product in products:
+        product['pdf'] = request.url_root + product['pdf'];
+    return jsonify((products))
 
 @app.route('/api/products/page')
 def get_products_page():
@@ -83,8 +87,11 @@ def get_products_page():
     print(jsonify(productpage))
     return jsonify(productpage)
 
-
-
+@app.route('/api/pdf/<path:filename>')
+def getPdf(filename):
+    print(filename)
+    # return send_from_directory('', filename, as_attachment=True)
+    return send_file(('PDF/' + filename), attachment_filename=filename)
 
 
 if __name__ == "__main__":

@@ -1,9 +1,8 @@
-from doctest import FAIL_FAST
+
+from requests import request
 from .base import BaseModel
 import sqlalchemy as sa 
 from sqlalchemy.ext import declarative
-from datetime import datetime
-from Models.orders import Order
 
 Base = declarative.declarative_base(bind=BaseModel().engine)
 
@@ -15,6 +14,7 @@ class Product(BaseModel,Base ):
     versionOnRobot = sa.Column(sa.Boolean, nullable=False)
     processingLength = sa.Column(sa.Integer, nullable=False)
     planCycleTime = sa.Column(sa.Integer, nullable=False)
+    pdf = sa.Column(sa.String, nullable=False)
 
     def __init__(self):
         super().__init__()
@@ -23,12 +23,13 @@ class Product(BaseModel,Base ):
 
     def add_product(self):
         product = Product()
-        product.id = 'Blasius 6'
-        product.programName = 'blasius6.src'
+        product.id = 'Blasius 10'
+        product.programName = 'blasius10.src'
         product.programVersion = 1
         product.versionOnRobot = True
         product.processingLength = 400
-        product.planCycleTime = 25
+        product.planCycleTime = 27
+        product.pdf = '1118-Aero-Duct-LH-921-A.pdf'
         self.session.add(product)
         self.session.commit()
 

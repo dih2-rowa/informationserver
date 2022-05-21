@@ -8,6 +8,7 @@ export interface Product{
     versionOnRobot : boolean;
     processingLength: number;
     planCycleTime: number;
+    pdf:string;
     ordersTodo: Orders[];
     ordersFinished: Orders[];
     orderRunning: Orders;
