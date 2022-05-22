@@ -1,37 +1,40 @@
-<div class="search">
-    <input type="text" name="searchInput" placeholder="Search" [(ngModel)]="searchInput">
-    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<div class="component-wrapper">
+
+
+    <div class="search">
+        <input type="text" name="searchInput" placeholder="Search" [(ngModel)]="searchInput">
+        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M24.763 23.6399L18.3084 17.2884C19.9987 15.452 21.0372 13.0234 21.0372 10.3509C21.0364 4.63387 16.3275 0 10.5183 0C4.70916 0 0.000244141 4.63387 0.000244141 10.3509C0.000244141 16.0678 4.70916 20.7017 10.5183 20.7017C13.0283 20.7017 15.3304 19.8335 17.1387 18.3902L23.6183 24.7667C23.934 25.0777 24.4466 25.0777 24.7623 24.7667C25.0788 24.4557 25.0788 23.9509 24.763 23.6399ZM10.5183 19.1092C5.60314 19.1092 1.6186 15.1879 1.6186 10.3509C1.6186 5.51376 5.60314 1.59254 10.5183 1.59254C15.4336 1.59254 19.4181 5.51376 19.4181 10.3509C19.4181 15.1879 15.4336 19.1092 10.5183 19.1092Z" fill="#0C0C0C"/>
     </svg>
-</div>
-<table class="product-table">
-    <thead>
-        <tr>
-            <th></th>
-            <th>ID</th>
-            <th>Programmname</th>
-            <th>Programmversion</th>
-            <th>Version am Roboter?</th>
-            <th>Soll-Taktzeit</th>
-            <th class="th-pdf">Anleitung</th>
-        </tr>
-    </thead>
-    <tbody>
-        <ng-container *ngFor="let product of products | search: searchInput">
+    </div>
+    <!-- <table class="product-table">
+        <thead>
             <tr>
-                <th class="triangle" (click)="onClickDrop(product.product.id)" id="triangle-{{product.product.id}}">
-                    <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <th></th>
+                <th>ID</th>
+                <th>Programmname</th>
+                <th>Programmversion</th>
+                <th>Version am Roboter?</th>
+                <th>Soll-Taktzeit</th>
+                <th class="th-pdf">Anleitung</th>
+            </tr>
+        </thead>
+        <tbody>
+            <ng-container *ngFor="let product of products | search: searchInput">
+                <tr>
+                    <th class="triangle" (click)="onClickDrop(product.product.id)" id="triangle-{{product.product.id}}">
+                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M13.5 7.13397C14.1667 7.51887 14.1667 8.48112 13.5 8.86602L1.5 15.7942C0.833333 16.1791 -7.73604e-07 15.698 -7.39955e-07 14.9282L-1.34273e-07 1.0718C-1.00623e-07 0.301996 0.833333 -0.17913 1.5 0.20577L13.5 7.13397Z" fill="#0C0C0C"/>
                     </svg>
-                </th>
-                <th>{{product.product.id}}</th>
-                <th>{{product.product.programName}}</th>
-                <th>{{product.product.programVersion}}</th>
-                <th>{{product.product.versionOnRobot}}</th>
-                <th>{{product.product.planCycleTime}} min</th>
-                <th class="th-pdf">
-                    <a href="{{'http://127.0.0.1:5000/api/pdf/' + product.product.pdf}}" target="blank">
-                        <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    </th>
+                    <th>{{product.product.id}}</th>
+                    <th>{{product.product.programName}}</th>
+                    <th>{{product.product.programVersion}}</th>
+                    <th>{{product.product.versionOnRobot}}</th>
+                    <th>{{product.product.planCycleTime}} min</th>
+                    <th class="th-pdf">
+                        <a href="{{'http://127.0.0.1:5000/api/pdf/' + product.product.pdf}}" target="blank">
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g clip-path="url(#clip0_29_205)">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M6.40622 0H14.7645L21.8485 7.38382V21.7454C21.8485 23.5445 20.393 25 18.6001 25H6.40622C4.60713 25 3.15161 23.5445 3.15161 21.7454V3.25461C3.15158 1.45552 4.6071 0 6.40622 0V0Z" fill="#E5252A"/>
                             <path opacity="0.302" fill-rule="evenodd" clip-rule="evenodd" d="M14.7583 0V7.32759H21.8485L14.7583 0Z" fill="white"/>
@@ -43,37 +46,99 @@
                             </clipPath>
                             </defs>
                             </svg>
-                    </a>
+                        </a>
 
-                </th>
-            </tr>
-            <tr class="fold" id="drop-{{product.product.id}}">
-                <th colspan="7" class="order-overview">
-                    <div class="runningOrder">
-                        <span class="labelDescription">Aktueller Auftrag: &nbsp;</span>
-                        <span *ngIf="product.runningOrder">{{product.runningOrder.id}}</span>
-                    </div>
-                    <div class="order-todo">
-                        <h3>Offene Aufträge</h3>
-                        <ul>
-                            <li *ngFor="let order of product.pendingOrders">
-                                {{order.id}}
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="line"></div>
-                    <div class="order-completed">
-                        <h3>Abgeschlossene Aufträge</h3>
-                        <ul>
-                            <li *ngFor="let order of product.finishedOrders">
-                                {{order.id}}
+                    </th>
+                </tr>
+                <tr class="fold" id="drop-{{product.product.id}}">
+                    <th colspan="7" class="order-overview">
+                        <div class="runningOrder">
+                            <span class="labelDescription">Aktueller Auftrag: &nbsp;</span>
+                            <span *ngIf="product.runningOrder">{{product.runningOrder.id}}</span>
+                        </div>
+                        <div class="order-todo">
+                            <h3>Offene Aufträge</h3>
+                            <ul>
+                                <li *ngFor="let order of product.pendingOrders">
+                                    {{order.id}}
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="line"></div>
+                        <div class="order-completed">
+                            <h3>Abgeschlossene Aufträge</h3>
+                            <ul>
+                                <li *ngFor="let order of product.finishedOrders">
+                                    {{order.id}}
 
-                            </li>
-                            <li></li>
-                        </ul>
+                                </li>
+                                <li></li>
+                            </ul>
+                        </div>
+                    </th>
+                </tr>
+            </ng-container>
+        </tbody>
+    </table> -->
+
+    <div class="product-wrapper">
+        <div class="product" *ngFor="let product of products | search: searchInput">
+            <h1 class="product-heading">{{product.product.id}}</h1>
+            <div class="product-properties-wrapper">
+                <div class="product-properties-descriptions">
+                    <h2 class="product-property-description">Programmversion:</h2>
+                    <h2 class="product-property-description">Prozesslänge:</h2>
+                    <h2 class="product-property-description">Soll-Taktzeit:</h2>
+                    <h2 class="product-property-description">Anleitung:</h2>
+                </div>
+                <div class="product-properties-values">
+                    <h2 class="product-property-value">{{product.product.programVersion}}</h2>
+                    <h2 class="product-property-value">{{product.product.processingLength}} min</h2>
+                    <h2 class="product-property-value">{{product.product.planCycleTime}} min</h2>
+                    <h2 class="product-property-value">
+                        <a href="{{'http://127.0.0.1:5000/api/pdf/' + product.product.pdf}}" target="blank">
+                            <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_29_205)">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.40622 0H14.7645L21.8485 7.38382V21.7454C21.8485 23.5445 20.393 25 18.6001 25H6.40622C4.60713 25 3.15161 23.5445 3.15161 21.7454V3.25461C3.15158 1.45552 4.6071 0 6.40622 0V0Z" fill="#E5252A"/>
+                        <path opacity="0.302" fill-rule="evenodd" clip-rule="evenodd" d="M14.7583 0V7.32759H21.8485L14.7583 0Z" fill="white"/>
+                        <path d="M6.76855 18.6531V14.0867H8.71134C9.19236 14.0867 9.57343 14.2179 9.86078 14.4865C10.1481 14.7488 10.2918 15.1049 10.2918 15.5484C10.2918 15.992 10.1481 16.348 9.86078 16.6104C9.57343 16.879 9.19236 17.0102 8.71134 17.0102H7.93672V18.6531H6.76855ZM7.93672 16.017H8.58016C8.75506 16.017 8.8925 15.9795 8.98622 15.892C9.0799 15.8108 9.12991 15.6984 9.12991 15.5485C9.12991 15.3986 9.07994 15.2861 8.98622 15.2049C8.89253 15.1174 8.75509 15.08 8.58016 15.08H7.93672V16.017ZM10.7728 18.6531V14.0867H12.3907C12.7093 14.0867 13.0092 14.1304 13.2903 14.2241C13.5714 14.3178 13.8275 14.449 14.0524 14.6302C14.2773 14.8051 14.4585 15.0424 14.5896 15.3423C14.7146 15.6422 14.7833 15.9857 14.7833 16.373C14.7833 16.7541 14.7146 17.0977 14.5896 17.3975C14.4585 17.6974 14.2773 17.9347 14.0524 18.1096C13.8275 18.2908 13.5714 18.422 13.2903 18.5157C13.0092 18.6094 12.7093 18.6531 12.3907 18.6531H10.7728ZM11.916 17.6599H12.2533C12.4345 17.6599 12.6031 17.6412 12.7593 17.5974C12.9092 17.5537 13.0529 17.485 13.1904 17.3913C13.3215 17.2976 13.4277 17.1664 13.5027 16.9915C13.5776 16.8166 13.6151 16.6104 13.6151 16.373C13.6151 16.1294 13.5776 15.9233 13.5027 15.7484C13.4277 15.5735 13.3215 15.4423 13.1904 15.3486C13.0529 15.2549 12.9093 15.1861 12.7593 15.1424C12.6031 15.0987 12.4345 15.0799 12.2533 15.0799H11.916V17.6599ZM15.3705 18.6531V14.0867H18.6189V15.0799H16.5387V15.8108H18.2003V16.7978H16.5387V18.6531H15.3705Z" fill="white"/>
+                        </g>
+                        <defs>
+                        <clipPath id="clip0_29_205">
+                        <rect width="25" height="25" fill="white"/>
+                        </clipPath>
+                        </defs>
+                        </svg>
+                        </a>
+                    </h2>
+                </div>
+            </div>
+            <div class="product-orders ">
+                <div class="product-orders-header">
+                    <div (click)="onClickDrop(product.product.id)" class="triangle" id="triangle-{{product.product.id}}">
+                        <svg width="14" height="16" viewBox="0 0 14 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13.5 7.13397C14.1667 7.51887 14.1667 8.48112 13.5 8.86602L1.5 15.7942C0.833333 16.1791 -7.73604e-07 15.698 -7.39955e-07 14.9282L-1.34273e-07 1.0718C-1.00623e-07 0.301996 0.833333 -0.17913 1.5 0.20577L13.5 7.13397Z" fill="#0C0C0C"/>
+                        </svg>
                     </div>
-                </th>
-            </tr>
-        </ng-container>
-    </tbody>
-</table>
+                    <h1 class="product-orders-heading">Aufträge</h1>
+                </div>
+                <div class="orders-wrapper" id="drop-{{product.product.id}}">
+                    <div class="running-order">
+                        <h3 class="running-order-header">Aktueller Auftrag: &nbsp;</h3>
+                        <h3 class="running-order-value">{{product.runningOrder.id}}</h3>
+                    </div>
+                    <div class="orders">
+                        <div class="open-orders">
+                            <h3 class="open-orders-heading">Offen:</h3>
+                            <h4 class="open-orders-value" *ngFor="let order of product.pendingOrders">{{order.id}}</h4>
+                        </div>
+                        <div class="finished-orders">
+                            <h3 class="finished-orders-heading">Abgeschlossen:</h3>
+                            <h4 class="finished-orders-value" *ngFor="let order of product.pendingOrders">{{order.id}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

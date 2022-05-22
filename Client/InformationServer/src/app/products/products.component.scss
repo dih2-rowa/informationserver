@@ -1,8 +1,14 @@
 @import "../../styles/variables.scss";
+.component-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 75vw;
+    // align-items: center;
+}
+
 .search {
-    float: right;
-    margin-top: 2.5rem;
-    margin-bottom: 2.5rem;
+    margin: 2.5rem auto;
     position: relative;
     width: fit-content;
     & input {
@@ -24,105 +30,231 @@
     }
 }
 
-.product-table {
-    margin-top: 5rem;
-    width: 100%;
-    text-align: left;
-    font-size: 1.8rem;
-    font-family: $font-secondary;
-    border-collapse: collapse;
-    thead {
-        background-color: #F4F4F4;
-        tr {
-            height: 5rem;
-            th {
-                font-weight: 100;
-                &.th-pdf {
-                    text-align: center;
-                }
+.product-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product {
+    margin: 1rem auto;
+    min-width: 30rem;
+    width: 23vw;
+    height: min-content;
+    border: 1px solid $primary-color;
+    border-radius: 1rem;
+    background-color: #F4F4F4;
+    // display: flex;
+    // flex-direction: column;
+    // align-items: center;
+    // justify-content: space-between;
+    // margin: 1rem 0;
+    &-heading {
+        text-align: center;
+    }
+    &-properties-wrapper {
+        margin: 0 auto;
+        width: 80%;
+        display: flex;
+    }
+    &-properties-values {
+        // margin-left: 4rem;
+        margin: auto 0 auto auto;
+    }
+    &-property-description {
+        font-weight: lighter;
+        font-size: 1.5rem;
+        font-family: $font-secondary;
+    }
+    &-property-value {
+        font-weight: lighter;
+        font-size: 1.5rem;
+        font-family: $font-secondary;
+    }
+}
+
+.product-orders {
+    margin: 0;
+    justify-content: start;
+    margin: 0 auto;
+    width: 80%;
+    &-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        & .triangle {
+            cursor: pointer;
+            transition: all .5s;
+            &.open {
+                transform: rotate(90deg);
             }
         }
     }
-    tbody {
-        tr {
-            height: 5rem;
-            &:nth-child(even) {
-                background-color: #F4F4F4;
+    &-heading {
+        margin-left: 2rem;
+        font: $font-secondary;
+        font-weight: lighter;
+    }
+    .open {
+        display: flex !important;
+    }
+    & .orders-wrapper {
+        // display: flex;
+        display: none;
+        flex-direction: column;
+        justify-content: space-between;
+        & .running-order {
+            display: flex;
+            justify-content: flex-start;
+            & h3 {
+                font-size: 1.6rem;
+                font-weight: lighter;
             }
-            th {
-                font-weight: 100;
-                &.th-pdf {
-                    text-align: center;
-                    & svg :hover {
-                        cursor: pointer;
-                    }
-                }
-                &.triangle {
-                    transition: all .2s;
-                    &:hover {
-                        cursor: pointer;
-                    }
-                    & svg {
-                        padding: 1rem;
-                    }
-                }
-                &.triangle-open {
-                    & svg {
-                        transform: rotate(90deg);
-                        padding: 1rem;
-                        cursor: pointer;
-                        transition: all .2s;
-                    }
-                }
+        }
+        & .orders {
+            width: 15vw;
+            display: flex;
+            font-size: 1.6rem;
+            flex-direction: column;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            & .open-orders {}
+            & .finished-orders {
+                &-heading {}
+            }
+            & h3 {
+                font-weight: lighter;
+            }
+            & h4 {
+                font-size: 1.5rem;
+                font-weight: lighter;
             }
         }
     }
 }
 
-.fold {
-    display: none;
-    &-open {
-        display: table-row;
-        transition: all cubic-bezier(0.165, 0.84, 0.44, 1);
+@media (max-width: 600px) {
+    .component-wrapper {
+        width: 100vw;
     }
-    & .order-overview {
-        position: relative;
-        & .order-todo {
-            display: inline-block;
-            margin-left: 15%;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-        & .runningOrder {
-            margin-top: 1rem;
-            text-align: center;
-            & .labelDescription {
-                font-weight: bold;
-            }
-        }
-    }
-    & .line {
-        position: absolute;
-        top: 35%;
-        left: 50%;
-        right: 50%;
-        display: inline;
-        border: 2px solid #a4a4a48b;
-        bottom: 10%;
-        height: inherit;
-        border-radius: 100rem;
-    }
-    & .order-completed {
-        // display: inline-block;
-        float: right;
-        // border: 1px solid #000;
-        margin-right: 15%;
-        margin-top: 1rem;
-        margin-bottom: 1rem;
-    }
-    & ul {
-        margin: 0 0 0 2rem;
-        padding: 0;
-        list-style: none;
-    }
+    // .search {
+    //     margin: 2rem auto;
+    //     & input {
+    //         &::placeholder {
+    //             font-size: 1.8rem;
+    //         }
+    //     }
+    // }
+    // .product-wrapper {
+    //     flex-direction: column;
+    // }
+    // .product {
+    //     width: 100%;
+    // }
+    // .product-table {
+    //     display: none;
+    // }
 }
+
+// .product-table {
+//     margin-top: 5rem;
+//     width: 100%;
+//     text-align: left;
+//     font-size: 1.8rem;
+//     font-family: $font-secondary;
+//     border-collapse: collapse;
+//     thead {
+//         background-color: #F4F4F4;
+//         tr {
+//             height: 5rem;
+//             th {
+//                 font-weight: 100;
+//                 &.th-pdf {
+//                     text-align: center;
+//                 }
+//             }
+//         }
+//     }
+//     tbody {
+//         tr {
+//             height: 5rem;
+//             &:nth-child(even) {
+//                 background-color: #F4F4F4;
+//             }
+//             th {
+//                 font-weight: 100;
+//                 &.th-pdf {
+//                     text-align: center;
+//                     & svg :hover {
+//                         cursor: pointer;
+//                     }
+//                 }
+//                 &.triangle {
+//                     transition: all .2s;
+//                     &:hover {
+//                         cursor: pointer;
+//                     }
+//                     & svg {
+//                         padding: 1rem;
+//                     }
+//                 }
+//                 &.triangle-open {
+//                     & svg {
+//                         transform: rotate(90deg);
+//                         padding: 1rem;
+//                         cursor: pointer;
+//                         transition: all .2s;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+// .fold {
+//     display: none;
+//     &-open {
+//         display: table-row;
+//         transition: all cubic-bezier(0.165, 0.84, 0.44, 1);
+//     }
+//     & .order-overview {
+//         position: relative;
+//         & .order-todo {
+//             display: inline-block;
+//             margin-left: 15%;
+//             margin-top: 1rem;
+//             margin-bottom: 1rem;
+//         }
+//         & .runningOrder {
+//             margin-top: 1rem;
+//             text-align: center;
+//             & .labelDescription {
+//                 font-weight: bold;
+//             }
+//         }
+//     }
+//     & .line {
+//         position: absolute;
+//         top: 35%;
+//         left: 50%;
+//         right: 50%;
+//         display: inline;
+//         border: 2px solid #a4a4a48b;
+//         bottom: 10%;
+//         height: inherit;
+//         border-radius: 100rem;
+//     }
+//     & .order-completed {
+//         // display: inline-block;
+//         float: right;
+//         // border: 1px solid #000;
+//         margin-right: 15%;
+//         margin-top: 1rem;
+//         margin-bottom: 1rem;
+//     }
+//     & ul {
+//         margin: 0 0 0 2rem;
+//         padding: 0;
+//         list-style: none;
+//     }
+// }

@@ -23,13 +23,13 @@ class Product(BaseModel,Base ):
 
     def add_product(self):
         product = Product()
-        product.id = 'Blasius 10'
-        product.programName = 'blasius10.src'
-        product.programVersion = 1
-        product.versionOnRobot = True
+        product.id = 'Blasius 9'
+        product.programName = 'blasius-9.src'
+        product.programVersion = 2
+        product.versionOnRobot = False
         product.processingLength = 400
         product.planCycleTime = 27
-        product.pdf = '1118-Aero-Duct-LH-921-A.pdf'
+        product.pdf = 'pdf-test.pdf'
         self.session.add(product)
         self.session.commit()
 

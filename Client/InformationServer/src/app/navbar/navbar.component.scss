@@ -7,180 +7,118 @@ $breakpoint: 799px;
 $nav-height: 70px;
 $nav-background: #F4F4F4;
 $link-hover-color: #2581DC;
-// Outer navigation wrapper
-.navigation {
-    height: $nav-height;
-    background: $nav-background;
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
 }
 
-// Logo and branding
-.brand {
-    float: left;
-    line-height: $nav-height;
-    text-transform: uppercase;
-    font-size: 2.4rem;
-    a,
-    a:visited {
-        color: $primary-color;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-}
-
-// Container with no padding for navbar
-.nav-container {
-    max-width: $content-width;
-    margin: 0 auto;
-}
-
-// Navigation 
+// Start of navigation
 nav {
-    ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        li {
-            float: left;
-            position: relative;
-            margin-left: 5rem;
-            a,
-            a:visited {
-                font-size: 1.8rem;
-                display: block;
-                padding: 0 20px;
-                line-height: $nav-height;
-                background: $nav-background;
-                color: $color-text;
-                text-decoration: none;
-                &:hover {
-                    color: $primary-color;
-                }
-                &:not(:only-child):after {
-                    padding-left: 4px;
-                    content: ' ▾';
-                }
-            }
-            // Dropdown list
-            ul li {
-                min-width: 190px;
-                a {
-                    padding: 15px;
-                    line-height: 20px;
-                }
-            }
-        }
+    background: $nav-background;
+    height: 80px;
+    width: 100%;
+}
+
+label.logo {
+    float: left;
+    color: $primary-color;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font: $font-secondary;
+}
+
+nav ul {
+    float: left;
+    margin-right: 20px;
+}
+
+nav ul li {
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+}
+
+nav ul li a {
+    color: $color-text;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+}
+
+nav ul li a.active,
+nav ul li a:hover {
+    color: $primary-color;
+    transition: .5s;
+}
+
+.checkbtn {
+    font-size: 30px;
+    color: $color-text;
+    float: right;
+    line-height: 80px;
+    margin-right: 40px;
+    cursor: pointer;
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+@media (max-width: 952px) {
+    label.logo {
+        font-size: 30px;
+        padding-left: 50px;
+    }
+    nav ul li a {
+        font-size: 16px;
     }
 }
 
+@media (max-width: 858px) {
+    .checkbtn {
+        display: block;
+    }
+    ul {
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: $nav-background;
+        top: 80px;
+        left: -100%;
+        text-align: center;
+        transition: all .5s;
+    }
+    nav ul li {
+        display: block;
+        margin: 50px 0;
+        line-height: 30px;
+    }
+    nav ul li a {
+        font-size: 20px;
+    }
+    a:hover,
+    a.active {
+        background: none;
+        color: $primary-color;
+    }
+    #check:checked~ul {
+        left: 0;
+    }
+}
+
+// End of navigation
 .container {
     max-width: $content-width;
     margin: 0 auto;
-}
-
-.nav-active {
-    color: $primary-color !important;
-}
-
-
-/* Mobile navigation */
-
-// Binds to JS Toggle
-.nav-mobile {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: $nav-background;
-    height: $nav-height;
-    width: $nav-height;
-}
-
-@media only screen and (max-width: $breakpoint-big) {
-    .container {
-        max-width: 80rem;
-    }
-    .nav-container {
-        max-width: 80rem;
-    }
-    .brand a,
-    a:visited {
-        font-size: 2rem !important;
-    }
-    li a,
-    a:visited {
-        font-size: 1.4rem !important;
-    }
-}
-
-@media only screen and (max-width: 798px) {
-    // Hamburger nav visible on mobile only
-    .nav-mobile {
-        display: block;
-    }
-    nav {
-        width: 100%;
-        padding: $nav-height 0 15px;
-        ul {
-            display: none;
-            li {
-                float: none;
-                a {
-                    padding: 15px;
-                    line-height: 20px;
-                }
-                ul li a {
-                    padding-left: 30px;
-                }
-            }
-        }
-    }
-    .nav-dropdown {
-        position: static;
-    }
-}
-
-@media screen and (min-width: $breakpoint-middle) {
-    .nav-list {
-        display: block !important;
-    }
-}
-
-#nav-toggle {
-    position: absolute;
-    left: 18px;
-    top: 22px;
-    cursor: pointer;
-    padding: 10px 35px 16px 0px;
-    span,
-    span:before,
-    span:after {
-        cursor: pointer;
-        border-radius: 1px;
-        height: 5px;
-        width: 35px;
-        background: $color-text;
-        position: absolute;
-        display: block;
-        content: '';
-        transition: all 300ms ease-in-out;
-    }
-    span:before {
-        top: -10px;
-    }
-    span:after {
-        bottom: -10px;
-    }
-    &.active span {
-        background-color: transparent;
-        &:before,
-        &:after {
-            top: 0;
-        }
-        &:before {
-            transform: rotate(45deg);
-        }
-        &:after {
-            transform: rotate(-45deg);
-        }
-    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
 }

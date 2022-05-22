@@ -37,13 +37,14 @@ export class ProductsComponent implements OnInit {
 
   onClickDrop(id:string):void{
     const dropdownField = document.getElementById('drop-' +id);
+    console.log(dropdownField)
     const triangle = document.getElementById('triangle-'+id);
-    if(dropdownField?.classList.contains('fold-open')){
-      dropdownField.classList.remove('fold-open');
-      triangle?.classList.remove('triangle-open')
+    if(dropdownField?.classList.contains('open')){
+      dropdownField.classList.remove('open');
+      triangle?.classList.remove('open')
     }else{
-      dropdownField?.classList.add('fold-open');
-      triangle?.classList.add('triangle-open');
+      dropdownField?.classList.add('open');
+      triangle?.classList.add('open');
     }
   }
 
