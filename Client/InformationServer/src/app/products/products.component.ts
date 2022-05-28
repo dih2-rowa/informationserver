@@ -22,13 +22,13 @@ export class ProductsComponent implements OnInit {
   
   products :ProductPage[] = []
   searchInput:string = "";
+  qrCodeClicked:boolean =false;
 
   constructor(private productService: ProductsService, private orderService: OrdersService) { }
 
   ngOnInit(): void {
     this.productService.get_products().subscribe((response) =>{
       this.products = response;
-      console.log(this.products);
     });
     
   }
@@ -46,6 +46,15 @@ export class ProductsComponent implements OnInit {
       dropdownField?.classList.add('open');
       triangle?.classList.add('open');
     }
+  }
+
+  onClickQrCode():void{
+    this.qrCodeClicked = !this.qrCodeClicked;
+  }
+
+  QrScanSuccess(result:string):void{
+    this.qrCodeClicked = false;
+    this.searchInput = result;
   }
 
 

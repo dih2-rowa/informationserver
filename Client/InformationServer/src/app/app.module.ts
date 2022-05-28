@@ -10,6 +10,10 @@ import { RouterModule } from '@angular/router';
 import { SearchPipe } from './pipes/search.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductSubPageComponent } from './product-sub-page/product-sub-page.component';
+
+//QR Code Scanner
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [
@@ -17,14 +21,16 @@ import { HttpClientModule } from '@angular/common/http';
     NavbarComponent,
     RobotsComponent,
     ProductsComponent,
-    SearchPipe
+    SearchPipe,
+    ProductSubPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ZXingScannerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
