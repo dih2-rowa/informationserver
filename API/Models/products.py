@@ -1,5 +1,5 @@
 
-from requests import request
+
 from .base import BaseModel
 import sqlalchemy as sa 
 from sqlalchemy.ext import declarative
@@ -23,13 +23,13 @@ class Product(BaseModel,Base ):
 
     def add_product(self):
         product = Product()
-        product.id = 'Blasius 9'
-        product.programName = 'blasius-9.src'
-        product.programVersion = 2
+        product.id = 'Blasius 10'
+        product.programName = 'blasius-10.src'
+        product.programVersion = 3
         product.versionOnRobot = False
         product.processingLength = 400
         product.planCycleTime = 27
-        product.pdf = 'pdf-test.pdf'
+        product.pdf = '1118-Aero-Duct-LH-921-A.pdf'
         self.session.add(product)
         self.session.commit()
 

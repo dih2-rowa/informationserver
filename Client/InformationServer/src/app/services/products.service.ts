@@ -11,10 +11,17 @@ export class ProductsService {
   constructor(private http:HttpClient) { }
 
   baseUrl = environment.baseUrl;
+  products:ProductPage[] = [];
+  productToReturn:any = {};
   get_products(){
-    
     // return this.http.get('http://127.0.0.1:5000/robots');
     return this.http.get<ProductPage[]>(this.baseUrl + '/products/page');
 
   }
+
+  get_product(id:string){
+    return this.http.get<ProductPage>(this.baseUrl+ '/products/page/' + id);
+  }
+
+
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Orders } from '../models/Orders';
 import { Product, ProductPage } from '../models/Products';
 import { SearchPipe } from '../pipes/search.pipe';
@@ -24,7 +25,7 @@ export class ProductsComponent implements OnInit {
   searchInput:string = "";
   qrCodeClicked:boolean =false;
 
-  constructor(private productService: ProductsService, private orderService: OrdersService) { }
+  constructor(private productService: ProductsService, private orderService: OrdersService, private router: Router) { }
 
   ngOnInit(): void {
     this.productService.get_products().subscribe((response) =>{
@@ -54,7 +55,12 @@ export class ProductsComponent implements OnInit {
 
   QrScanSuccess(result:string):void{
     this.qrCodeClicked = false;
-    this.searchInput = result;
+    // this.searchInput = result;
+    this.router.navigate(['/products/' +result + '/product-detail'])
+  }
+
+  navigateToSubPage(id:string):void{
+    this.router.navigate(['/products/' +id + '/product-detail']);
   }
 
 

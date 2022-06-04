@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Product, ProductPage } from '../models/Products';
+import { ProductsService } from '../services/products.service';
 
 @Component({
   selector: 'app-product-sub-page',
@@ -6,10 +9,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./product-sub-page.component.scss']
 })
 export class ProductSubPageComponent implements OnInit {
-
-  constructor() { }
+  product:any;
+  productPage:any;
+  constructor(private route:ActivatedRoute, private productService: ProductsService, private router:Router) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params:Params) => this.product = params);
+    this.productService.get_product(this.product.id).subscribe((response) =>{
+      console.log(response)
+      this.productPage = response;
+    });
+
+    console.log(this.productPage);
+
+
   }
+
+ 
 
 }

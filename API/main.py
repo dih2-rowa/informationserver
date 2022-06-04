@@ -63,6 +63,27 @@ def get_products():
 
 @app.route('/api/products/page')
 def get_products_page():
+    productpage = getProductPages()
+    print(jsonify(productpage))
+    return jsonify(productpage)
+
+@app.route('/api/pdf/<path:filename>')
+def getPdf(filename):
+    print(filename)
+    # return send_from_directory('', filename, as_attachment=True)
+    return send_file(('PDF/' + filename), attachment_filename=filename)
+
+@app.route('/api/products/page/<id>',methods = ["GET"])
+def get_product(id):
+    products = getProductPages()
+    print(products)
+    for product in products:
+        print(product)
+        if product['product']['id'] == id:
+            return jsonify(product)
+
+
+def getProductPages():
     # get all products and orders
     products = ProductService().getProducts()
     orders = OrderService().getOrders()
@@ -84,15 +105,7 @@ def get_products_page():
                 elif order['orderStatus'] == 'Running':
                     runningOrder = order
         productpage.append(Productpage(product=product,finishedOrders=finishedorders, pendingOrders=pendingorders, runningOrder=runningOrder).serialize())
-    print(jsonify(productpage))
-    return jsonify(productpage)
-
-@app.route('/api/pdf/<path:filename>')
-def getPdf(filename):
-    print(filename)
-    # return send_from_directory('', filename, as_attachment=True)
-    return send_file(('PDF/' + filename), attachment_filename=filename)
-
+    return productpage
 
 if __name__ == "__main__":
     app.run(debug=True)

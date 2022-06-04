@@ -1,1 +1,88 @@
-<p>product-sub-page works!</p>
+<div class="container">
+    <div class="button-wrapper">
+        <button class="btn-back" routerLink="/products">Back</button>
+    </div>
+    <h1 class="product-header">{{productPage.product.id}}</h1>
+    <div class="product-details-wrapper">
+        <div class="product-detail-wrapper">
+            <div class="product-detail-description">
+                <p>Programmname:</p>
+            </div>
+            <div class="product-detail-value">
+                <p>{{productPage.product.programName}}</p>
+            </div>
+        </div>
+        <div class="product-detail-wrapper">
+            <div class="product-detail-description">
+                <p>Programmversion:</p>
+            </div>
+            <div class="product-detail-value">
+                <p>{{productPage.product.programVersion}}</p>
+            </div>
+        </div>
+        <div class="product-detail-wrapper">
+            <div class="product-detail-description">
+                <p>Version am Roboter?</p>
+            </div>
+            <div class="product-detail-value">
+                <p>{{productPage.product.versionOnRobot}}</p>
+            </div>
+        </div>
+        <div class="product-detail-wrapper">
+            <div class="product-detail-description">
+                <p>Prozesslänge:</p>
+            </div>
+            <div class="product-detail-value">
+                <p>{{productPage.product.processingLength}}</p>
+            </div>
+        </div>
+        <div class="product-detail-wrapper">
+            <div class="product-detail-description">
+                <p>Soll-Taktzeit:</p>
+            </div>
+            <div class="product-detail-value">
+                <p>{{productPage.product.planCycleTime}}s</p>
+            </div>
+        </div>
+        <div class="product-detail-wrapper">
+            <div class="product-detail-description">
+                <p>Anleitung:</p>
+            </div>
+            <div class="product-detail-value">
+                <a href="{{'http://127.0.0.1:5000/api/pdf/' + productPage.product.pdf}}" target="blank">
+                    <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g clip-path="url(#clip0_29_205)">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M6.40622 0H14.7645L21.8485 7.38382V21.7454C21.8485 23.5445 20.393 25 18.6001 25H6.40622C4.60713 25 3.15161 23.5445 3.15161 21.7454V3.25461C3.15158 1.45552 4.6071 0 6.40622 0V0Z" fill="#E5252A"/>
+                <path opacity="0.302" fill-rule="evenodd" clip-rule="evenodd" d="M14.7583 0V7.32759H21.8485L14.7583 0Z" fill="white"/>
+                <path d="M6.76855 18.6531V14.0867H8.71134C9.19236 14.0867 9.57343 14.2179 9.86078 14.4865C10.1481 14.7488 10.2918 15.1049 10.2918 15.5484C10.2918 15.992 10.1481 16.348 9.86078 16.6104C9.57343 16.879 9.19236 17.0102 8.71134 17.0102H7.93672V18.6531H6.76855ZM7.93672 16.017H8.58016C8.75506 16.017 8.8925 15.9795 8.98622 15.892C9.0799 15.8108 9.12991 15.6984 9.12991 15.5485C9.12991 15.3986 9.07994 15.2861 8.98622 15.2049C8.89253 15.1174 8.75509 15.08 8.58016 15.08H7.93672V16.017ZM10.7728 18.6531V14.0867H12.3907C12.7093 14.0867 13.0092 14.1304 13.2903 14.2241C13.5714 14.3178 13.8275 14.449 14.0524 14.6302C14.2773 14.8051 14.4585 15.0424 14.5896 15.3423C14.7146 15.6422 14.7833 15.9857 14.7833 16.373C14.7833 16.7541 14.7146 17.0977 14.5896 17.3975C14.4585 17.6974 14.2773 17.9347 14.0524 18.1096C13.8275 18.2908 13.5714 18.422 13.2903 18.5157C13.0092 18.6094 12.7093 18.6531 12.3907 18.6531H10.7728ZM11.916 17.6599H12.2533C12.4345 17.6599 12.6031 17.6412 12.7593 17.5974C12.9092 17.5537 13.0529 17.485 13.1904 17.3913C13.3215 17.2976 13.4277 17.1664 13.5027 16.9915C13.5776 16.8166 13.6151 16.6104 13.6151 16.373C13.6151 16.1294 13.5776 15.9233 13.5027 15.7484C13.4277 15.5735 13.3215 15.4423 13.1904 15.3486C13.0529 15.2549 12.9093 15.1861 12.7593 15.1424C12.6031 15.0987 12.4345 15.0799 12.2533 15.0799H11.916V17.6599ZM15.3705 18.6531V14.0867H18.6189V15.0799H16.5387V15.8108H18.2003V16.7978H16.5387V18.6531H15.3705Z" fill="white"/>
+                </g>
+                <defs>
+                <clipPath id="clip0_29_205">
+                <rect width="25" height="25" fill="white"/>
+                </clipPath>
+                </defs>
+                </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="line"></div>
+    <div class="orders-wrapper">
+        <h1 class="orders-header">Aufträge</h1>
+        <div class="current-Order-wrapper">
+            <p>Aktuell: &nbsp;</p>
+            <p>{{productPage.runningOrder.id}}</p>
+        </div>
+        <div class="other-orders-wrapper">
+            <div class="open-orders-wrapper">
+                <h1 class="open-orders-wrapper-header">Offen:</h1>
+                <h1 class="open-orders-wrapper-items" *ngFor="let order of productPage.pendingOrders">{{order.id}}</h1>
+            </div>
+            <div class="line-second"></div>
+            <div class="finished-orders-wrapper">
+                <h1 class="finished-orders-wrapper-header">Abgeschlossen:</h1>
+                <h1 class="finished-orders-wrapper-items" *ngFor="let order of productPage.finishedOrders">{{order.id}}</h1>
+            </div>
+        </div>
+    </div>
+</div>
