@@ -1,5 +1,102 @@
 # Information Server
 
+## Purpose
+This software enables an user to obtain information about current orders and work sequences as easily as possible. The shown data is based on a product identification and comes from the Orion Context Broker (OCB) and a web server.
+
+### Features
+  - provide order data for a certain product from OCB
+  - possibility to attach documents like e.g.: work sequence to a product
+  - QR-Code base search funktion
+  - search bar to find specific products
+
+## Overview
+The Robot Program Handler was developed as part of the Robosonic Project (Part of the 2nd [DIH²](http://www.dih-squared.eu/) funding project). Developed by [RoWa Automation GmBh](https://www.rowa-automation.at/)
+
+## Architecture
+
+![image](https://user-images.githubusercontent.com/102011176/175539909-c005e85d-96b5-45fe-9783-27968cb5ac6a.png)
+*The whole picture shows the scope of the entire Robosonic project. The red square shows the components of the Information Server.*
+
+Basically, the Program Handler consists of 3 software components:
+  - Robot Program Handler - Server
+  - Robot Program Handler - Client
+  - File Server
+
+### Robot Program Handler - Server
+Is a software written in C# that is based on the OpenSource [C3bridge-server](https://github.com/ulsu-tech/c3bridge-server).
+The software itself has to be installed directly on the robot and .here it takes over the functions for sending and receiving robot programs.
+
+### Robot Program Handler - Client
+The robot program handler - client serves as a communication bridge between the individual components.
+The interface to the OCB was realised via a specially developed API. The communication between client and server is done over TCP/IP. Furthermore, the client takes over the program transfer between file server and robot.
+
+### File Server
+The file server is used to make robot programs available to several processing centres.
+
+## How to adapt it?
+
+## How to deploy it?
+
+## How to use it?
+
+## Environment Restrictions
+
+## Known Limitations
+
+## Improvements Backlog
+
+## License
+Provided under various open source licenses (mainly [Apache License 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) and [MIT](http://opensource.org/licenses/MIT)). Third-party libraries or application servers included are distributed under their respective licenses. Full list including optional dependencies can be found on [Camunda - Third party libraries](https://docs.camunda.org/manual/7.15/introduction/third-party-libraries/).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Kommt von alter Vorlage kann bei Fertigstellung gelöscht werden
+
 [![License: MIT](https://img.shields.io/github/license/ramp-eu/TTE.project1.svg)](https://opensource.org/licenses/MIT)
 [![Docker badge](https://img.shields.io/docker/pulls/ramp-eu/TTE.project1.svg)](https://hub.docker.com/r/<org>/<repo>/)
 <br/>
