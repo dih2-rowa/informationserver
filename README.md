@@ -10,28 +10,23 @@ This software enables an user to obtain information about current orders and wor
   - search bar to find specific products
 
 ## Overview
-The Robot Program Handler was developed as part of the Robosonic Project (Part of the 2nd [DIH²](http://www.dih-squared.eu/) funding project). Developed by [RoWa Automation GmBh](https://www.rowa-automation.at/)
+The Information Server was developed as part of the Robosonic Project (Part of the 2nd [DIH²](http://www.dih-squared.eu/) funding project). Developed by [RoWa Automation GmBh](https://www.rowa-automation.at/)
 
 ## Architecture
 
-![image](https://user-images.githubusercontent.com/102011176/175539909-c005e85d-96b5-45fe-9783-27968cb5ac6a.png)
+![image](https://user-images.githubusercontent.com/102011176/175545443-489eeeb5-7f34-4d03-aa02-6bf11b5d22fd.png)
 *The whole picture shows the scope of the entire Robosonic project. The red square shows the components of the Information Server.*
 
-Basically, the Program Handler consists of 3 software components:
-  - Robot Program Handler - Server
-  - Robot Program Handler - Client
-  - File Server
+Basically, the Information Server consists of 3 software components:
+  - Operator Information Server
+  - Web Server
+  - GUI
 
-### Robot Program Handler - Server
-Is a software written in C# that is based on the OpenSource [C3bridge-server](https://github.com/ulsu-tech/c3bridge-server).
-The software itself has to be installed directly on the robot and .here it takes over the functions for sending and receiving robot programs.
+### Operator Information Server
 
-### Robot Program Handler - Client
-The robot program handler - client serves as a communication bridge between the individual components.
-The interface to the OCB was realised via a specially developed API. The communication between client and server is done over TCP/IP. Furthermore, the client takes over the program transfer between file server and robot.
+### Web Server
 
-### File Server
-The file server is used to make robot programs available to several processing centres.
+### GUI
 
 ## How to adapt it?
 
