@@ -23,20 +23,59 @@ Basically, the Information Server consists of 3 software components:
   - GUI
 
 ### Operator Information Server
+  The Operator Information Server is written in python and with the use of the library Flask.
+  The API reads the data from the CrateDB and returns it to the Web-Client if the data is requested. To access CrateDB the library SQLAlchemy is used. But only the version 1.3 or lower supports CrateDB.
+
 
 ### Web Server
 
 ### GUI
+  The graphical user interface is written with the Angular-framework. This allows to write the website a reusable way. The website is designed with HTML and SCSS. Typescript is used to request the data from the api and parse it down to the HTML-template.
 
 ## How to adapt it?
+  - **API:** To adapt the API you have to change the connection string to the database.
+     If the database runs on localhost:4200 you can skip that step.
+  - **Web-Client:** To adapt the Web-Client you have to change the base-Url in both of the environment files in the environments folder.
 
 ## How to deploy it?
+The Information server consists of two big parts:
+  - **API:** To run the API, you need python and all libraries, which are listed in the requirements.txt file. To install the libraries you need to navigate to the folder with the requirements.txt file and run the command:
+    python -m pip install -r requirements.txt
+    To create the connection to the database you have to change the following code:
+        
+        self.engine = sa.create_engine('crate://')
+
+    Replace 'crate://' with the Connection-String of your database.
+    You don't have to change it when the database is running on localhost:4200.
+    After that you need to navigate to the API-folder and youcan start the API with the following command:
+    
+        python3 main.py --port 4400
+    
+    4400 can be replaced by any port.
+  - **Web-Client:** To run the client you need to install Angular CLI with the     following command:
+
+        npm install -g @angular/cli.
+    After installing Angular CLI navigate to the environments folder and change the baseUrl-variable in both files to the url of the API.
+    To run the app you need to navigate to Client/InformationServer/src/app.
+    The run the following command:
+
+        ng serve --port 4401
+    
+    The port 4401 can be changed to any other port.
+
 
 ## How to use it?
+  Access the Information-Server on the port where it is deployed.
+  To make use of the QR-Code Scanner the device needs a camera. When you click 'QR Code scannen' the browser ask for permission to access the camera. If you want to make use of it you have to click 'Yes'.
+  The website can be used on large and  on mobile screen sizes.
+
 
 ## Environment Restrictions
+  
 
 ## Known Limitations
+  The QR-Code-Scanner can only be usef if the device which access the website has a camera.
+
 
 ## Improvements Backlog
 
