@@ -1,7 +1,5 @@
-from cProfile import run
-import json
-from urllib.request import Request
-from flask import Flask, jsonify, request, send_file, send_from_directory
+
+from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS, cross_origin
 from Models.ProductPage import Productpage
 from services.orderService import OrderService
@@ -13,7 +11,6 @@ from Models.products import Product
 from services.robotService import RobotService
 from Models.robots import Robot
 
-from Models.enums import OrderStatus
 
 
 app = Flask(__name__)
@@ -100,7 +97,7 @@ def getProductPages():
             if order['product_id'] == product['id']:
                 if order['orderStatus'] == 'Finished':
                     finishedorders.append(order)
-                elif order['orderStatus'] == 'Pending':
+                elif order['orderStatus'] == 'Open':
                     pendingorders.append(order)
                 elif order['orderStatus'] == 'Running':
                     runningOrder = order
@@ -109,3 +106,4 @@ def getProductPages():
 
 if __name__ == "__main__":
     app.run(debug=True)
+    print("started")

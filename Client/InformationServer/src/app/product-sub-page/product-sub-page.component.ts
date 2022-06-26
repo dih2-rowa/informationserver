@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { Product, ProductPage } from '../models/Products';
 import { ProductsService } from '../services/products.service';
 
@@ -11,6 +12,7 @@ import { ProductsService } from '../services/products.service';
 export class ProductSubPageComponent implements OnInit {
   product:any;
   productPage:any;
+  baseUrl: string = environment.baseUrl;
   constructor(private route:ActivatedRoute, private productService: ProductsService, private router:Router) { }
 
   ngOnInit(): void {

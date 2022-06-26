@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { Orders } from '../models/Orders';
 import { Product, ProductPage } from '../models/Products';
 import { SearchPipe } from '../pipes/search.pipe';
@@ -24,6 +25,7 @@ export class ProductsComponent implements OnInit {
   products :ProductPage[] = []
   searchInput:string = "";
   qrCodeClicked:boolean =false;
+  baseUrl:string = environment.baseUrl;
 
   constructor(private productService: ProductsService, private orderService: OrdersService, private router: Router) { }
 

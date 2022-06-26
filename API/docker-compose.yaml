@@ -17,5 +17,12 @@ services:
         condition: on-failure
     environment:
       - CRATE_HEAP_SIZE=2g
+  pythonapplication1:
+    image: python:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 5011:5011
 
   

@@ -37,14 +37,15 @@ class Order(BaseModel,Base ):
     #adding sample data to db (only for tesing purposes)
     def add(self):
         order = Order()
-        order.id = 'Order 2'
-        order.product_id = 'Blasius 10'
-        order.planParts = 10000
-        order.prodParts = 1643
-        order.startTime = datetime.now();
-        order.deadline = datetime.now() + timedelta(days=2)
+        order.id = 'ON001356'
+        order.product_id = 'MY83-014K97'
+        order.planParts = 8000
+        order.prodParts = 8000
+        order.startTime = datetime(2022,6,18,12,17,55);
+        order.finishedTime = datetime(2022,6,19,11,25,20)
+        order.deadline = datetime(2022,8,19,12,17,55)
         order.orderStatus = 'Finished'
-        order.workingStation = 'Robot01'
+        order.workingStation = 'Robot1'
         self.session.add(order)
         self.session.commit()
     
