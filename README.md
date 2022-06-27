@@ -39,8 +39,14 @@ Basically, the Information Server consists of 3 software components:
 
 ## How to deploy it?
 The Information server consists of two big parts:
-  - **API:** To run the API, you need python and all libraries, which are listed in the requirements.txt file. To install the libraries you need to navigate to the folder with the requirements.txt file and run the command:
-    python -m pip install -r requirements.txt
+  - **API:** To run the api you have to navigate to the API folder. Then run the command:
+
+        docker-compose up
+
+    After that all libraries are installed and you can access the API.
+    If the host or port need to be changed, it is necessary to change the following conde in the main.py file:
+    
+        app.run(host="0.0.0.0", port="5011", debug=True)
     To create the connection to the database you have to change the following code:
         
         self.engine = sa.create_engine('crate://')
@@ -52,16 +58,11 @@ The Information server consists of two big parts:
         python3 main.py --port 4400
     
     4400 can be replaced by any port.
-  - **Web-Client:** To run the client you need to install Angular CLI with the     following command:
+  - **Web-Client:** To run the client you need to navigate to the folder "Client/InformationServer and run following command:
+  
+        docker-compose up
 
-        npm install -g @angular/cli.
-    After installing Angular CLI navigate to the environments folder and change the baseUrl-variable in both files to the url of the API.
-    To run the app you need to navigate to Client/InformationServer/src/app.
-    The run the following command:
-
-        ng serve --port 4401
-    
-    The port 4401 can be changed to any other port.
+    After that, all libraries are automaticaly installed and the website can be started through docker.
 
 
 ## How to use it?
