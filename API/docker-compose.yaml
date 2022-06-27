@@ -17,7 +17,7 @@ services:
         condition: on-failure
     environment:
       - CRATE_HEAP_SIZE=2g
-  pythonapplication1:
+  API:
     image: python:latest
     build:
       context: .

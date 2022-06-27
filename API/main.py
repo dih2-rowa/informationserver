@@ -15,7 +15,7 @@ from Models.robots import Robot
 
 app = Flask(__name__)
 # CORS is only needed if a website requests data from the api
-cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+cors = CORS(app, resources={r"*": {"origins": "*"}})
 
 @app.route("/api", methods=["GET"])
 def get_home():
@@ -105,5 +105,5 @@ def getProductPages():
     return productpage
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port="5011", debug=True)
     print("started")
