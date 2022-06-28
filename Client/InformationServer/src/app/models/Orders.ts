@@ -4,6 +4,7 @@ export interface Orders{
     id: string;
     planParts: number;
     prodParts: number;
+    prodPartsIO: number;
     startTime: Date;
     finishedTime:Date;
     deadline:Date;
