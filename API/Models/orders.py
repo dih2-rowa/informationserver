@@ -20,6 +20,7 @@ class Order(BaseModel,Base ):
     id = sa.Column(sa.String, primary_key=True)
     planParts = sa.Column(sa.Integer)
     prodParts = sa.Column(sa.Integer, nullable=False)
+    prodPartsIO = sa.Column(sa.Integer)
     startTime = sa.Column(sa.DateTime)
     finishedTime = sa.Column(sa.DateTime)
     deadline = sa.Column(sa.DateTime)
