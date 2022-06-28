@@ -76,7 +76,7 @@ def get_product(id):
     print(products)
     for product in products:
         print(product)
-        if product['product']['id'] == id:
+        if product['product']['entity_id'] == id:
             return jsonify(product)
 
 
@@ -86,7 +86,7 @@ def getProductPages():
     orders = OrderService().getOrders()
     # orders = orders.items()
     productpage = []
-    # print(orders)
+    print(orders)
 
     for product in products:
         finishedorders = []
@@ -94,12 +94,12 @@ def getProductPages():
         runningOrder = {}
         for order in orders:
             print(order)
-            if order['product_id'] == product['id']:
-                if order['orderStatus'] == 'Finished':
+            if product['entity_id'] == order['productid'] :
+                if order['orderstatus'] == 'Finished':
                     finishedorders.append(order)
-                elif order['orderStatus'] == 'Open':
+                elif order['orderstatus'] == 'Open':
                     pendingorders.append(order)
-                elif order['orderStatus'] == 'Running':
+                elif order['orderstatus'] == 'Running':
                     runningOrder = order
         productpage.append(Productpage(product=product,finishedOrders=finishedorders, pendingOrders=pendingorders, runningOrder=runningOrder).serialize())
     return productpage

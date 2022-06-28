@@ -2,14 +2,16 @@
     <div class="button-wrapper">
         <button class="btn-back" routerLink="/products">Back</button>
     </div>
-    <h1 class="product-header">{{productPage.product.id}}</h1>
+    <h1>{{productPage}}</h1>
+    <h1>{{productPage.product}}</h1>
+    <h1 class="product-header">{{productPage.product.entity_id}}</h1>
     <div class="product-details-wrapper">
         <div class="product-detail-wrapper">
             <div class="product-detail-description">
                 <p>Programmname:</p>
             </div>
             <div class="product-detail-value">
-                <p>{{productPage.product.programName}}</p>
+                <p>{{productPage.product.programname}}</p>
             </div>
         </div>
         <div class="product-detail-wrapper">
@@ -17,7 +19,7 @@
                 <p>Programmversion:</p>
             </div>
             <div class="product-detail-value">
-                <p>{{productPage.product.programVersion}}</p>
+                <p>{{productPage.product.programversion}}</p>
             </div>
         </div>
         <div class="product-detail-wrapper">
@@ -25,7 +27,7 @@
                 <p>Version am Roboter?</p>
             </div>
             <div class="product-detail-value">
-                <p>{{productPage.product.versionOnRobot}}</p>
+                <p>{{productPage.product.versiononrobot}}</p>
             </div>
         </div>
         <div class="product-detail-wrapper">
@@ -33,7 +35,7 @@
                 <p>Prozesslänge:</p>
             </div>
             <div class="product-detail-value">
-                <p>{{productPage.product.processingLength}}mm</p>
+                <p>{{productPage.product.processinglength}}mm</p>
             </div>
         </div>
         <div class="product-detail-wrapper">
@@ -41,7 +43,7 @@
                 <p>Soll-Taktzeit:</p>
             </div>
             <div class="product-detail-value">
-                <p>{{productPage.product.planCycleTime}} min</p>
+                <p>{{productPage.product.plancycletime}} s</p>
             </div>
         </div>
         <div class="product-detail-wrapper">
@@ -71,17 +73,17 @@
         <h1 class="orders-header">Aufträge</h1>
         <div class="current-Order-wrapper">
             <p>Aktuell: &nbsp;</p>
-            <p>{{productPage.runningOrder.id}}</p>
+            <p>{{productPage.runningorder.entity_id}}</p>
         </div>
         <div class="other-orders-wrapper">
             <div class="open-orders-wrapper">
                 <h1 class="open-orders-wrapper-header">Offen:</h1>
-                <h1 class="open-orders-wrapper-items" *ngFor="let order of productPage.pendingOrders">{{order.id}}</h1>
+                <h1 class="open-orders-wrapper-items" *ngFor="let order of productPage.pendingOrders">{{order.entity_id}}</h1>
             </div>
             <div class="line-second"></div>
             <div class="finished-orders-wrapper">
                 <h1 class="finished-orders-wrapper-header">Abgeschlossen:</h1>
-                <h1 class="finished-orders-wrapper-items" *ngFor="let order of productPage.finishedOrders">{{order.id}}</h1>
+                <h1 class="finished-orders-wrapper-items" *ngFor="let order of productPage.finishedOrders">{{order.entity_id}}</h1>
             </div>
         </div>
     </div>

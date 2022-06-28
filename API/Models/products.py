@@ -8,7 +8,7 @@ Base = declarative.declarative_base(bind=BaseModel().engine)
 
 class Product(BaseModel,Base ):
     __tablename__ = 'etproduct'
-    id = sa.Column(sa.String, primary_key=True)
+    entity_id = sa.Column(sa.String, primary_key=True)
     programName = sa.Column(sa.String, nullable=False)
     programVersion = sa.Column(sa.Integer, nullable=False)
     versionOnRobot = sa.Column(sa.Boolean, nullable=False)
@@ -23,7 +23,7 @@ class Product(BaseModel,Base ):
 
     def add_product(self):
         product = Product()
-        product.id = 'MY83-014K97'
+        product.entity_id = 'MY83-014K97'
         product.programName = 'MY83-014K97.src'
         product.programVersion = 5
         product.versionOnRobot = True

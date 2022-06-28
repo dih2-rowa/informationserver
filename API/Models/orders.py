@@ -24,9 +24,9 @@ class Order(BaseModel,Base ):
     startTime = sa.Column(sa.DateTime)
     finishedTime = sa.Column(sa.DateTime)
     deadline = sa.Column(sa.DateTime)
-    orderStatus = sa.Column(sa.String, nullable=False)
+    orderstatus = sa.Column(sa.String, nullable=False)
     workingStation = sa.Column(sa.String, nullable=False)
-    product_id = sa.Column(sa.String,nullable=False)
+    productid = sa.Column(sa.String,nullable=False)
     
 
     def __init__(self):
@@ -39,13 +39,13 @@ class Order(BaseModel,Base ):
     def add(self):
         order = Order()
         order.id = 'ON001356'
-        order.product_id = 'MY83-014K97'
+        order.productid = 'MY83-014K97'
         order.planParts = 8000
         order.prodParts = 8000
         order.startTime = datetime(2022,6,18,12,17,55);
         order.finishedTime = datetime(2022,6,19,11,25,20)
         order.deadline = datetime(2022,8,19,12,17,55)
-        order.orderStatus = 'Finished'
+        order.orderstatus = 'Finished'
         order.workingStation = 'Robot1'
         self.session.add(order)
         self.session.commit()

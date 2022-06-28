@@ -1,22 +1,21 @@
-import { Time } from "@angular/common";
 import { Orders } from "./Orders";
 
 export interface Product{
-    id:string;
-    programName : string;
-    programVersion: number;
-    versionOnRobot : boolean;
-    processingLength: number;
-    planCycleTime: number;
+    entity_id : string;
+    programname : string;
+    programversion: number;
+    versiononrobot : boolean;
+    processinglength: number;
+    plancycletime: number;
     pdf:string;
-    ordersTodo: Orders[];
-    ordersFinished: Orders[];
-    orderRunning: Orders;
+    orderstodo: Orders[];
+    ordersfinished: Orders[];
+    orderrunning: Orders;
 }
 
 export interface ProductPage{
     product:Product;
-    runningOrder: Orders;
-    pendingOrders: Orders[];
-    finishedOrders:Orders[];
+    runningorder: Orders;
+    pendingorders: Orders[];
+    finishedorders:Orders[];
 }
