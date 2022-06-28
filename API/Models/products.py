@@ -7,7 +7,7 @@ from sqlalchemy.ext import declarative
 Base = declarative.declarative_base(bind=BaseModel().engine)
 
 class Product(BaseModel,Base ):
-    __tablename__ = 'products'
+    __tablename__ = 'etproduct'
     id = sa.Column(sa.String, primary_key=True)
     programName = sa.Column(sa.String, nullable=False)
     programVersion = sa.Column(sa.Integer, nullable=False)
@@ -36,7 +36,7 @@ class Product(BaseModel,Base ):
 
     
     def get_all(self):
-        query = f'select * from {self.__tablename__}'
+        query = f'select * from mtrobot_info.{self.__tablename__}'
         res = self.session.execute(query).fetchall()
         return self.toDict(res)
         

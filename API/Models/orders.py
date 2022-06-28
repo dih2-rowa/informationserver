@@ -16,7 +16,7 @@ Base = declarative.declarative_base(bind=BaseModel().engine)
 
 class Order(BaseModel,Base ):
     #Defenition of the table which is created in the CrateDB
-    __tablename__ = 'orders'
+    __tablename__ = 'etorder'
     id = sa.Column(sa.String, primary_key=True)
     planParts = sa.Column(sa.Integer)
     prodParts = sa.Column(sa.Integer, nullable=False)
@@ -51,7 +51,7 @@ class Order(BaseModel,Base ):
         self.session.commit()
     
     def get_all(self):
-        query = f'select * from {self.__tablename__}'
+        query = f'select * from mtrobot_info.{self.__tablename__}'
         res = self.session.execute(query).fetchall()
         return self.toDict(res)
         
