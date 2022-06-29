@@ -11,5 +11,8 @@ export interface Orders{
     orderstatus: string;
     workingstation:string;
     productid :string;
+    __original_ngsi_entity__:any;
+    fiware_servicepath: string;
+    time_index: number;
 
 }

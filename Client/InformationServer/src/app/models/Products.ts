@@ -15,7 +15,7 @@ export interface Product{
 
 export interface ProductPage{
     product:Product;
-    runningorder: Orders;
-    pendingorders: Orders[];
-    finishedorders:Orders[];
+    runningOrder: Orders;
+    pendingOrders: Orders[];
+    finishedOrders:Orders[];
 }
