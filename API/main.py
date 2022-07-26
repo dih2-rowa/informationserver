@@ -1,4 +1,3 @@
-
 from flask import Flask, jsonify, request, send_file
 from flask_cors import CORS, cross_origin
 from Models.ProductPage import Productpage
@@ -21,15 +20,17 @@ cors = CORS(app, resources={r"*": {"origins": "*"}})
 def get_home():
     return 'Welcome to Robosonic-API'
 
-@app.route("/api/robots/add", methods =["GET","POST"])
-def add_robot():
-    Robot().add()
-    return 'Robot added'
+# @app.route("/api/robots/add", methods =["GET","POST"])
+# def add_robot():
+#     Robot().add()
+#     return 'Robot added'
 
 @app.route("/api/product/add", methods=["GET", "POST"])
 @cross_origin()
 def add_product():
-    Product().add_product()
+    print(request.form['productName'])
+
+    Product().add_product(request.form['productName'], request.form['programVersion'], request.form['planCycleTime'], request.form['pdf'])
     return 'Product added'
 
 @app.route("/api/robots", methods = ["GET"])
