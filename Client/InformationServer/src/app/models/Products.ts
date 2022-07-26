@@ -2,11 +2,11 @@ import { Orders } from "./Orders";
 
 export interface Product{
     entity_id : string;
-    programname : string;
-    programversion: number;
-    versiononrobot : boolean;
-    processinglength: number;
-    plancycletime: number;
+    programName : string;
+    programVersion: number;
+    versionOnRobot : boolean;
+    processingLength: number;
+    planCycleTime: number;
     pdf:string;
     orderstodo: Orders[];
     ordersfinished: Orders[];

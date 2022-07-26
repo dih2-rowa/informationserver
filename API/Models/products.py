@@ -22,14 +22,14 @@ class Product(BaseModel,Base ):
         Base.metadata.create_all()
 
 
-    def add_product(self):
+    def add_product(self, productName, programVersion, planCycleTime, pdf):
         product = Product()
-        product.entity_id = 'MY83-014K98'
-        product.programName = 'MY83-014K97.src'
-        product.programVersion = 5
+        product.entity_id = 'MY83-014K99'
+        product.programName = productName
+        product.programVersion = programVersion
         product.versionOnRobot = True
         product.processingLength = 340
-        product.planCycleTime = 42
+        product.planCycleTime = planCycleTime
         product.pdf = '1118-Aero-Duct-LH-921-A.pdf'
         self.session.add(product)
         self.session.commit()

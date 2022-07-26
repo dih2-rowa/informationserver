@@ -3,12 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import {Product, ProductPage} from '../models/Products'
 import { environment } from 'src/environments/environment';
 import { Orders } from '../models/Orders';
+import { Router } from '@angular/router';
+import { ProductsComponent } from '../products/products.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient, private router: Router) { }
 
   baseUrl = environment.baseUrl;
   products:ProductPage[] = [];
@@ -21,6 +23,17 @@ export class ProductsService {
 
   get_product(id:string){
     return this.http.get<ProductPage>(this.baseUrl+ '/products/page/' + id);
+  }
+
+  add_product(productName:string, productVersion: string, planCycleTime: string, pdf:File){
+    const product = new FormData();
+    product.append("productName", productName);
+    product.append("productVersion", productVersion);
+    product.append("planCycleTime", planCycleTime);
+    product.append("pdf", pdf);
+    this.http.post(this.baseUrl + '/product/add',product).subscribe(response => {
+      this.router.navigate(["/"]);
+    });
   }
 
 

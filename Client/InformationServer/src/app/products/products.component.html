@@ -1,6 +1,6 @@
-
 <div class="component-wrapper">
     <div class="search-wrapper">
+        <button routerLink="/addProduct">Add Product</button>
         <div class="search">
             <input type="text" name="searchInput" placeholder="Search" [(ngModel)]="searchInput">
             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -12,6 +12,7 @@
         </div>
 
     </div>
+
     <div class="qr-code-scanner-wrapper" *ngIf="qrCodeClicked">
         <zxing-scanner (scanSuccess)="QrScanSuccess($event)">
 
@@ -28,9 +29,9 @@
                     <h2 class="product-property-description">Anleitung:</h2>
                 </div>
                 <div class="product-properties-values">
-                    <h2 class="product-property-value">{{product.product.programversion}}</h2>
-                    <h2 class="product-property-value">{{product.product.processinglength}} mm</h2>
-                    <h2 class="product-property-value">{{product.product.plancycletime}} s</h2>
+                    <h2 class="product-property-value">{{product.product.programVersion}}</h2>
+                    <h2 class="product-property-value">{{product.product.processingLength}} mm</h2>
+                    <h2 class="product-property-value">{{product.product.planCycleTime}} s</h2>
                     <h2 class="product-property-value">
                         <a href="{{ baseUrl + '/pdf/' + product.product.pdf}}" target="blank">
                             <svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">

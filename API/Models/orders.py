@@ -17,6 +17,7 @@ Base = declarative.declarative_base(bind=BaseModel().engine)
 class Order(BaseModel,Base ):
     #Defenition of the table which is created in the CrateDB
     __tablename__ = 'etorder'
+    __table_args__ = {'schema': 'mtrobot_info'}
     entity_id = sa.Column(sa.String, primary_key=True)
     planParts = sa.Column(sa.Integer)
     prodParts = sa.Column(sa.Integer, nullable=False)
