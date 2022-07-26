@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { RobotsComponent } from './robots/robots.component';
-import { ProductsComponent } from './products/products.component';
+
 import { RouterModule } from '@angular/router';
 import { SearchPipe } from './pipes/search.pipe';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,9 +14,7 @@ import { ProductSubPageComponent } from './product-sub-page/product-sub-page.com
 
 //QR Code Scanner
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
-import { AddProductComponent } from './add-product/add-product.component';
-import { AddOrderComponent } from './add-order/add-order.component';
-import { AddRobotComponent } from './add-robot/add-robot.component';
+import { ProductsComponent } from './productInformation/products.component';
 
 @NgModule({
   declarations: [
@@ -26,9 +24,6 @@ import { AddRobotComponent } from './add-robot/add-robot.component';
     ProductsComponent,
     SearchPipe,
     ProductSubPageComponent,
-    AddProductComponent,
-    AddOrderComponent,
-    AddRobotComponent
   ],
   imports: [
     BrowserModule,

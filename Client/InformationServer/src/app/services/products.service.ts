@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {Product, ProductPage} from '../models/Products'
 import { environment } from 'src/environments/environment';
-import { Orders } from '../models/Orders';
 import { Router } from '@angular/router';
-import { ProductsComponent } from '../products/products.component';
 
 @Injectable({
   providedIn: 'root'
