@@ -1,4 +1,4 @@
-from importlib.metadata import metadata
+
 import sqlalchemy as sa
 from sqlalchemy.orm import sessionmaker
 from uuid import uuid4
