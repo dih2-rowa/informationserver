@@ -23,7 +23,7 @@ import { ProductsComponent } from './productInformation/products.component';
     RobotsComponent,
     ProductsComponent,
     SearchPipe,
-    ProductSubPageComponent,
+    ProductSubPageComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +32,7 @@ import { ProductsComponent } from './productInformation/products.component';
     HttpClientModule,
     FormsModule,
     ZXingScannerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

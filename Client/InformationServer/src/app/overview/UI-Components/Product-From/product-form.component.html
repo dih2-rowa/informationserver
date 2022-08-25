@@ -1,0 +1,58 @@
+<form [formGroup]="form" id="createForm" class="needs-validation" (submit)="onSaveProduct()">
+    <div class="row mt-4">
+        <div class="col-sm-12 col-md-6 ">
+            <form class="form-floating">
+                <input formControlName="productName" type="text" class="form-control" id="Id" placeholder="ID" required>
+                <label for="Id">ID</label>
+                <div *ngIf="form.get('productName').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine ID ein!</div>
+            </form>
+        </div>
+        <div class="col-md-6 mt-md-0 mt-4">
+            <form class="form-floating">
+                <input formControlName="programName" type="text" class="form-control" id="programName" placeholder="Programmname">
+                <label for="programName">Programmname</label>
+                <div *ngIf="form.get('programName').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte einen Programmnamen ein!</div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-6 mt-md-0 mt-4">
+            <form class="form-floating">
+                <input formControlName="programVersion" type="number" class="form-control" id="programVersion" placeholder="Programmversion" value="1">
+                <label for="programVersion">Programmversion</label>
+                <div *ngIf="form.get('programVersion').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Programmversion ein!</div>
+            </form>
+        </div>
+        <div class="col-md-6 mt-md-0 mt-4">
+            <form class="form-floating">
+                <input formControlName="processingLength" type="number" class="form-control" id="processingLength" placeholder="Prozesslänge">
+                <label for="processingLength">Prozesslänge</label>
+                <div *ngIf="form.get('processingLength').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Prozesslänge ein!</div>
+            </form>
+        </div>
+    </div>
+    <div class="row mt-md-2 mt-4">
+        <div class="col-md-12">
+            <form class="form-floating">
+                <input formControlName="planCycleTime" type="number" class="form-control" id="planCycleTime" placeholder="Soll-Taktzeit">
+                <label for="planCycleTime">Soll-Taktzeit</label>
+                <div *ngIf="form.get('planCycleTime').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Soll-Taktzeit ein!</div>
+            </form>
+        </div>
+
+    </div>
+    <div class="row mt-md-2 mt-4">
+        <div>
+            <input formControlName="pdf" class="form-control " id="pdf" type="file" id="formFile">
+            <div *ngIf="form.get('pdf').invalid && markedAsTouched" for="Id" class="text-danger">Wählen Sie bitte ein PDF aus</div>
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="offset-md-6 col-md-3 col-6">
+            <button routerLink="/overview" class=" btn btn-secondary form-control">Zurück</button>
+        </div>
+        <div class="col-md-3 col-6">
+            <button class="btn btn-primary form-control" (click)="onAddClicked()">Generieren</button>
+        </div>
+    </div>
+</form>

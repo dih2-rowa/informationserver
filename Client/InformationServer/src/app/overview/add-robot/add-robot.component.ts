@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FiwareService } from 'src/app/services/fiware.service';
 
 @Component({
   selector: 'app-add-robot',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddRobotComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fiwareService: FiwareService) { }
 
   ngOnInit(): void {
   }
+
+
 
 }

@@ -15,12 +15,13 @@ export class ProductsService {
   productToReturn:any = {};
   get_products(){
     // return this.http.get('http://127.0.0.1:5000/robots');
-    return this.http.get<ProductPage[]>(this.baseUrl + '/products/page');
+    console.log('Going here');
+    return this.http.get<ProductPage[]>(this.baseUrl + '/products/get');
 
   }
 
   get_product(id:string){
-    return this.http.get<ProductPage>(this.baseUrl+ '/products/page/' + id);
+    return this.http.get<ProductPage>(this.baseUrl+ '/products/product' + id);
   }
 
   add_product(productName:string, productVersion: string, planCycleTime: string, pdf:File){

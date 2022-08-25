@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
+import { RouterModule } from '@angular/router';
+import { FiwareService } from 'src/app/services/fiware.service';
+import { Product } from 'src/app/models/Products';
 
 @Component({
   selector: 'app-add-product',
@@ -11,38 +15,57 @@ export class AddProductComponent implements OnInit {
 
   form!: FormGroup
   mode: string = "create"
-  constructor(private productService: ProductsService) { }
-  // entity_id : string;
-  // programName : string;
-  // programVersion: number;
-  // versionOnRobot : boolean;
-  // processingLength: number;
-  // planCycleTime: number;
-  // pdf:string;
+  message: string;
+  addClicked:boolean = false
+  markedAsTouched: boolean = false;
+  product: Product;
+
+  productJson:string;
+
+  constructor(private productService: ProductsService, private router: Router, private fiwareService: FiwareService) { }
 
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-        productName: new FormControl(null, {validators: [Validators.required]}),
-        programVersion: new FormControl(null, {validators: [Validators.required]}),
-        planCycleTime: new FormControl(null, {validators: [Validators.required]}),
-        pdf: new FormControl(null)
-    });
+
   }
 
-  onSaveProduct(){
-    if(this.form.invalid){
-      return;
-    }
-    if(this.mode === 'create'){
-        this.productService.add_product(
-          this.form.value.productName,
-          this.form.value.programVersion,
-          this.form.value.planCycleTime,
-          this.form.value.pdf
-        );
-    }else{
+  onCancelClick(){
+    this.router.navigateByUrl("");
+  }
 
-    }
+  onGenerate(product: Product){
+    this.product = product;
+    this.productJson =`{
+      "id": "${product.entity_id}",
+      "type": "Product",
+      "programName": {
+        "value": "${product.programname}",
+        "type": "String"
+      },
+      "programVersion": {
+        "value": ${product.programversion},
+        "type": "Integer"
+      },
+      "programVersionOnRobot": {
+        "value": 1,
+        "type": "Integer"
+      },
+      "processingLength": {
+        "value": ${product.processinglength},
+        "type": "Integer"
+      },
+      "planCycleTime": {
+        "value": ${product.plancycletime},
+        "type": "Integer"
+      },
+      "pdf": {
+        "value": "${product.pdf}",
+        "type": "String"
+      }
+    }`
+  }
+
+  sendRequestClicked(){
+    this.fiwareService.addProduct(this.productJson);
   }
 }

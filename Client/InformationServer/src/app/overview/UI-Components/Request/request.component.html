@@ -1,0 +1,13 @@
+<div class="card row mt-4 mb-4">
+    <div class="card-body">
+        <pre>
+          {{requestJson}}
+        </pre>
+    </div>
+
+    <div class="card-footer">
+        <div class="col-4 offset-8">
+            <button [disabled]="!requestJson" class="form-control btn btn-primary" (click)="sendRequest($event)">Send Request</button>
+        </div>
+    </div>
+</div>

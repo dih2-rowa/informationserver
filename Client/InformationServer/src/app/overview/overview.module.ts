@@ -6,6 +6,9 @@ import { ProductOverviewComponent } from './product-overview/product-overview.co
 import { AddOrderComponent } from './add-order/add-order.component';
 import { OverViewRoutingModule } from './overview-routing.module';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ProductFormComponent } from './UI-Components/Product-From/product-form.component';
+import { RequestComponent } from './UI-Components/Request/request.component';
 
 
 
@@ -14,11 +17,15 @@ import { RouterModule } from '@angular/router';
     AddProductComponent,
     AddRobotComponent,
     ProductOverviewComponent,
-    AddOrderComponent
+    AddOrderComponent,
+    ProductFormComponent,
+    RequestComponent
   ],
   imports: [
     CommonModule,
-    OverViewRoutingModule
+    OverViewRoutingModule,
+    RouterModule,
+    ReactiveFormsModule
   ]
 })
 export class OverviewModule { }

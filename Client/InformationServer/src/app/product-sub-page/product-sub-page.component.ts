@@ -13,7 +13,7 @@ import { ProductsService } from '../services/products.service';
 })
 export class ProductSubPageComponent implements OnInit {
   product:string = "";
-  productPage:any = {}
+  productPage:ProductPage;
   baseUrl: string = environment.baseUrl;
   constructor(private route:ActivatedRoute, private productService: ProductsService, private router:Router) { }
 
@@ -21,30 +21,9 @@ export class ProductSubPageComponent implements OnInit {
     this.route.params.subscribe((params:Params) => this.product = params['id']);
     this.productService.get_product(this.product).subscribe((response) =>{
       console.log(response)
-      this.productPage = response;
-      this.productPage.product = response.product;
-      this.productPage.product = {
-          entity_id : response.product.entity_id,
-          programversion: response.product.programVersion,
-          versiononrobot: response.product.versionOnRobot,
-          programname: response.product.programName,
-          processinglength: response.product.processingLength,
-          plancycletime: response.product.planCycleTime,
-          pdf: response.product.pdf
-      }
-      this.productPage.pendingorders = response.pendingOrders
-      this.productPage.finishedorders = response.finishedOrders
-      this.productPage.runningorder = response.runningOrder
-      // response.pendingOrders.forEach(order => {
-      //   this.productPage.pendingorders.add(order)
-      // });
-      // response.finishedOrders.forEach(order => {
-      //   this.productPage.finishedorders.add(order)
-      // });
-      // this.productPage.runningOrder.entity_id = response.runningOrder.entity_id;
+        this.productPage = response;
     });
 
-    console.log(this.productPage);
 
 
   }

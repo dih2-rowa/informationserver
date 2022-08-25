@@ -1,53 +1,6 @@
-<!-- <form [formGroup]="form" (submit)="onSaveProduct()">
-    <input class="formControl " type="text" formControlName="productName">
-    <input type="number" formControlName="programVersion">
-    <input type="text" formControlName="planCycleTime">
-    <input type="file" formControlName="pdf">
-    <button class="" type="submit">Erstellen</button>
-</form> -->
-
 <div class="row text-center mt-5">
     <h2>Produkt hinzufügen</h2>
 </div>
-<div class="row mt-4">
-    <div class="col-6">
-        <form class="form-floating">
-            <input type="text" class="form-control" id="Id" placeholder="ID">
-            <label for="id">ID</label>
-        </form>
-    </div>
-    <div class="col-6">
-        <form class="form-floating">
-            <input type="number" class="form-control" id="programVersion" placeholder="Programmversion" value="1">
-            <label for="programVersion">Programmversion</label>
-        </form>
-    </div>
-</div>
-<div class="row mt-2">
-    <div class="col-6">
-        <form class="form-floating">
-            <input type="number" class="form-control" id="processlength" placeholder="Prozesslänge">
-            <label for="processlength">Prozesslänge</label>
-        </form>
-    </div>
-    <div class="col-6">
-        <form class="form-floating">
-            <input type="number" class="form-control" id="cycleTime" placeholder="Soll-Taktzeit">
-            <label for="cycleTime">Soll-Taktzeit</label>
-        </form>
-    </div>
-</div>
-<div class="row mt-2">
-    <div>
-        <input class="form-control" type="file" id="formFile">
-    </div>
-</div>
-<div class="row mt-4">
-    <div class="col-6"></div>
-    <div class="col-3">
-        <button class="btn btn-secondary form-control">Cancel</button>
-    </div>
-    <div class="col-3">
-        <button class="btn btn-primary form-control">Hinzufügen</button>
-    </div>
-</div>
+<product-ui-form (generate)="onGenerate($event)"></product-ui-form>
+<h5 class="mt-4">Request:</h5>
+<request-form [requestJson]="productJson" (sendRequestEmitter)="sendRequestClicked()"></request-form>
