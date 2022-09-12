@@ -26,6 +26,7 @@ export class ProductsService {
 
   add_product(productName:string, productVersion: string, planCycleTime: string, pdf:File){
     const product = new FormData();
+    
     product.append("productName", productName);
     product.append("productVersion", productVersion);
     product.append("planCycleTime", planCycleTime);

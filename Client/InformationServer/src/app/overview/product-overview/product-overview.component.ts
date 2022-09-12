@@ -14,13 +14,13 @@ export class ProductOverviewComponent implements OnInit {
   constructor(private router: Router){}
 
   products: Product[] = [
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
-    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: true, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []}
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []},
+    {entity_id: 'MY-0234', programname:'MY-0234.src', programversion: 1, versiononrobot: 1, processinglength: 34, plancycletime: 32, pdf:'', orderrunning: null, ordersfinished:[], orderstodo: []}
   ];
 
   orders: Orders[] = [

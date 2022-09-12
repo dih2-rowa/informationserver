@@ -4,7 +4,7 @@ export interface Product{
     entity_id : string;
     programname : string;
     programversion: number;
-    versiononrobot : boolean;
+    versiononrobot : number;
     processinglength: number;
     plancycletime: number;
     pdf:string;

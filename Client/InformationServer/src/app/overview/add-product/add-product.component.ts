@@ -35,34 +35,7 @@ export class AddProductComponent implements OnInit {
 
   onGenerate(product: Product){
     this.product = product;
-    this.productJson =`{
-      "id": "${product.entity_id}",
-      "type": "Product",
-      "programName": {
-        "value": "${product.programname}",
-        "type": "String"
-      },
-      "programVersion": {
-        "value": ${product.programversion},
-        "type": "Integer"
-      },
-      "programVersionOnRobot": {
-        "value": 1,
-        "type": "Integer"
-      },
-      "processingLength": {
-        "value": ${product.processinglength},
-        "type": "Integer"
-      },
-      "planCycleTime": {
-        "value": ${product.plancycletime},
-        "type": "Integer"
-      },
-      "pdf": {
-        "value": "${product.pdf}",
-        "type": "String"
-      }
-    }`
+    this.productJson =`{"id": "${product.entity_id}","type": "Product","programName": {"value": "${product.programname}","type": "String"},"programVersion": {"value": ${product.programversion},"type": "Integer"},"VersionOnRobot": {"value": 1,"type": "Integer"},"processingLength": {"value": ${product.processinglength},"type": "Integer"},"planCycleTime": {"value": ${product.plancycletime}, "type": "Integer"}}`
   }
 
   sendRequestClicked(){

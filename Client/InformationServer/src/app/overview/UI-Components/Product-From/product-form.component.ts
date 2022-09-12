@@ -45,7 +45,7 @@ export class ProductFormComponent implements OnInit{
         orderstodo: null,
         orderrunning: null,
         ordersfinished: null,
-        versiononrobot: false,
+        versiononrobot: 1,
       }
       this.generate.emit(this.product);
 

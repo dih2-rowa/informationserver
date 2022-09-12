@@ -9,20 +9,24 @@ import { json } from 'express';
 })
 export class FiwareService {
 data:string;
-header = new HttpHeaders({'Content-Type':'application/json;',
-                          'Access-Control-Allow-Origin' : '*'})
+header = new HttpHeaders({'Content-Type':'application/json;'})
   constructor(private http: HttpClient, private router:Router) { }
 
   addProduct(jsonString){
 
-    let headers = new Headers ({'Accept': 'application/json', 'Fiware-Service': 'x', 'Fiware-ServicePath': '/x', 'Access-Control-Allow-Origin': '*'});
+
+    let headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'fiware-service' : 'robot_info',
+      "fiware-servicepath": "/demo"
+     });
 
     // this.http.get("http://localhost:1026/v2/entities").subscribe(res => {
     //   console.log(res);
     // })
     console.log(JSON.stringify(jsonString));
 
-    this.http.post("http://localhost:1026/v2/entities"  ,{headers: headers, body: JSON.stringify(jsonString)} ).subscribe(res => {
+    return this.http.post("http://localhost:1026/v2/entities" , jsonString ,{headers: headers} ).subscribe(res => {
       this.router.navigateByUrl('/overview');
     });
 
