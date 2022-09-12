@@ -33,9 +33,10 @@ export class AddProductComponent implements OnInit {
     this.router.navigateByUrl("");
   }
 
+  // PDF is gelöscht wegen syntax problem - soll "/" sein, ist "\"
   onGenerate(product: Product){
     this.product = product;
-    this.productJson =`{"id": "${product.entity_id}","type": "Product","programName": {"value": "${product.programname}","type": "String"},"programVersion": {"value": ${product.programversion},"type": "Integer"},"VersionOnRobot": {"value": 1,"type": "Integer"},"processingLength": {"value": ${product.processinglength},"type": "Integer"},"planCycleTime": {"value": ${product.plancycletime}, "type": "Integer","pdf": {"value": "${product.pdf}","type": "String"}}}`
+    this.productJson =`{"id": "${product.entity_id}","type": "Product","programName": {"value": "${product.programname}","type": "String"},"programVersion": {"value": ${product.programversion},"type": "Integer"},"VersionOnRobot": {"value": 1,"type": "Integer"},"processingLength": {"value": ${product.processinglength},"type": "Integer"},"planCycleTime": {"value": ${product.plancycletime}, "type": "Integer"}}`
   }
 
   sendRequestClicked(){

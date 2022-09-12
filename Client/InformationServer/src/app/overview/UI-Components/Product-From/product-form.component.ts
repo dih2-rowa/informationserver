@@ -38,8 +38,8 @@ export class ProductFormComponent implements OnInit{
       this.product = {
         entity_id: this.form.get('productName').value,
         programname: this.form.get('programName').value,
-        programversion: this.form.get('productName').value,
-        processinglength: this.form.get('productName').value,
+        programversion: this.form.get('programVersion').value,
+        processinglength: this.form.get('processingLength').value,
         plancycletime: this.form.get('planCycleTime').value,
         pdf: this.form.get('pdf').value,
         orderstodo: null,
