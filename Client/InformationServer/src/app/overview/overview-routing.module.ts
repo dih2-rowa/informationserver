@@ -4,10 +4,9 @@ import { AddOrderComponent } from "./add-order/add-order.component";
 import { AddProductComponent } from "./add-product/add-product.component";
 import { AddRobotComponent } from "./add-robot/add-robot.component";
 import { ProductOverviewComponent } from "./product-overview/product-overview.component";
-import { ProductResolver } from "./resolver/product.resolver";
 
 export const routes: Routes = [
-  {path: '', component: ProductOverviewComponent,resolve: {products: ProductResolver}},
+  {path: '', component: ProductOverviewComponent},
   {path: 'addProduct', component: AddProductComponent},
   {path: 'addOrder', component: AddOrderComponent},
   {path: 'addRobot', component: AddRobotComponent},
@@ -19,7 +18,6 @@ export const routes: Routes = [
 
 
 @NgModule({
-  providers:[ProductResolver],
   imports:[
     RouterModule.forChild(routes)
   ],

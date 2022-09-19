@@ -2,10 +2,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Orders } from '../models/Orders';
-import { Product, ProductPage } from '../models/Products';
+import { FiwareProduct, Product, ProductPage } from '../models/Products';
 import { SearchPipe } from '../pipes/search.pipe';
-import { OrdersService } from '../services/orders.service';
-import { ProductsService } from '../services/products.service';
+import { FiwareService } from '../services/fiware.service';
 
 enum OrderStatus{
   Finished = 'Finished',
@@ -27,12 +26,43 @@ export class ProductsComponent implements OnInit {
   qrCodeClicked:boolean =false;
   baseUrl:string = environment.baseUrl;
 
-  constructor(private productService: ProductsService, private orderService: OrdersService, private router: Router) { }
+  fiwareProducts:FiwareProduct;
+
+  constructor(private router: Router, private fiwareService: FiwareService) { }
 
   ngOnInit(): void {
-    this.productService.get_productPages().subscribe((response) =>{
-      this.products = response;
-    });
+    // this.productService.get_productPages().subscribe((response) =>{
+    //   this.products = response;
+    // });
+
+    this.fiwareService.getProducts().subscribe((product: FiwareProduct[]) => {
+      console.log(product);
+      product.forEach((product: FiwareProduct) => {
+        if(product.type === 'Product')
+      this.products.push({
+        product: {
+          entity_id: product.id,
+          programname:product.programName.value,
+          processinglength: product.processingLength.value,
+          programversion: product.programVersion.value,
+          pdf: product.pdf.value,
+          plancycletime: product.planCycleTime.value,
+          versiononrobot: product.versionOnRobot.value,
+          orderrunning: null,
+          ordersfinished: null,
+          orderstodo: null
+        },
+        orderrunning: null,
+        orderstodo: null,
+        ordersfinished:null,
+      })
+
+      })
+
+      console.log(this.products);
+    })
+
+
   }
 
 

@@ -13,10 +13,10 @@
             </div>
             <div class="col-md-6 mt-md-0 mt-4">
                 <form class="form-floating">
-                    <select formControlName="productId" class="form-control" id="productId" placeholder="Select workingstation">
-                    <option [ngValue]="product.entity_id" *ngFor="let product of products">{{product.entity_id}}</option>
+                    <select formControlName="productId" class="form-control" id="productId" placeholder="Select product">
+                      <option [ngValue]="product.entity_id" *ngFor="let product of products">{{product.entity_id}}</option>
                   </select>
-                    <label for="productId">Arbeitsstation</label>
+                    <label for="productId">Produkt</label>
                     <div *ngIf="form.get('productId').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Soll-Taktzeit ein!</div>
                 </form>
             </div>

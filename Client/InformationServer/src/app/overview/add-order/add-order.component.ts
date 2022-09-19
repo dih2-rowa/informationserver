@@ -82,7 +82,7 @@ export class AddOrderComponent implements OnInit {
             currCycleTime: robot.currCycleTime.value,
             drawer1Status: robot.drawer1Status.value,
             drawer2Status: robot.drawer2Status.value,
-            orderID:robot.orderId?.value
+            orderID:robot.orderID?.value
           });
         }
       });

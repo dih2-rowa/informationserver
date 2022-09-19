@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductsService } from '../../services/products.service';
 import { RouterModule } from '@angular/router';
 import { FiwareService } from 'src/app/services/fiware.service';
 import { FiwareProduct, Product, ProductPage } from 'src/app/models/Products';

@@ -23,5 +23,5 @@ export interface FiwareRobot{
   drawer2Status: FiwareObject,
   drawer1Status: FiwareObject,
   currCycleTime: FiwareObject,
-  orderId: FiwareObject
+  orderID: FiwareObject
 }

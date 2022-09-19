@@ -4,7 +4,6 @@ import { FiwareOrder, Orders } from 'src/app/models/Orders';
 import { FiwareProduct, Product } from 'src/app/models/Products';
 import { FiwareRobot, Robot } from 'src/app/models/Robot';
 import { FiwareService } from 'src/app/services/fiware.service';
-import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-product-overview',
@@ -13,7 +12,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductOverviewComponent implements OnInit {
 
-  constructor(private router: Router, private productService: ProductsService, private route: ActivatedRoute, private fiwareService:FiwareService){
+  constructor(private router: Router, private route: ActivatedRoute, private fiwareService:FiwareService){
 
   }
 
@@ -90,6 +89,7 @@ export class ProductOverviewComponent implements OnInit {
       });
       res.forEach((robot:FiwareRobot) => {
         if(robot.type == 'Processdata'){
+          console.log(robot);
           this.robots.push({
             id: robot.id,
             restServiceLife: robot.restServiceLife.value,
@@ -99,7 +99,7 @@ export class ProductOverviewComponent implements OnInit {
             currCycleTime: robot.currCycleTime.value,
             drawer1Status: robot.drawer1Status.value,
             drawer2Status: robot.drawer2Status.value,
-            orderID:robot.orderId?.value
+            orderID:robot.orderID?.value
           });
         }
       });
@@ -121,7 +121,7 @@ export class ProductOverviewComponent implements OnInit {
   deleteProduct(entity_id:string){
     console.log(entity_id);
     this.fiwareService.deleteProduct(entity_id);
-    this.router.navigate(['/overview']);
+    this.products = this.products.filter(product  => product.entity_id !== entity_id);
   }
 
   deleteRobot(id:string){

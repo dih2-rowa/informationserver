@@ -38,8 +38,8 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-   this.http.get<FiwareProduct>("http://localhost:1026/v2/entities", {headers: this.header}).pipe().subscribe(res => console.log(res));
-    return this.http.get<FiwareProduct>("http://localhost:1026/v2/entities", {headers: this.header});
+  //  this.http.get<FiwareProduct[]>("http://localhost:1026/v2/entities", {headers: this.header}).pipe().subscribe(res => console.log(res));
+    return this.http.get<FiwareProduct[]>("http://localhost:1026/v2/entities", {headers: this.header});
   }
 
   updateProduct(jsonString, productId:string){

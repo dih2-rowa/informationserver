@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RobotsService } from '../services/robots.service';
+import { FiwareService } from '../services/fiware.service';
 
 @Component({
   selector: 'app-robots',
@@ -9,10 +9,10 @@ import { RobotsService } from '../services/robots.service';
 export class RobotsComponent implements OnInit {
 
   robots:any = []
-  constructor(private robotService: RobotsService) { }
+  constructor(private fiwareService: FiwareService) { }
 
   ngOnInit(): void {
-    this.robotService.get_robots().subscribe((response: any) =>{
+    this.fiwareService.getRobots().subscribe((response: any) =>{
       this.robots = response;
     });
   }
