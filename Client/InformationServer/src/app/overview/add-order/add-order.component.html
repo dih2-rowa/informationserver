@@ -1,1 +1,64 @@
-<p>add-order works!</p>
+<div class="row text-center mt-5">
+    <h2>Auftrag hinzufügen</h2>
+</div>
+<div>
+    <form [formGroup]="form" id="createForm" class="needs-validation">
+        <div class="row mt-4">
+            <div class="col-sm-12 col-md-6 ">
+                <form class="form-floating">
+                    <input formControlName="orderId" type="text" class="form-control" id="Id" placeholder="ID" required>
+                    <label for="Id">ID</label>
+                    <div *ngIf="form.get('orderId').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine ID ein!</div>
+                </form>
+            </div>
+            <div class="col-md-6 mt-md-0 mt-4">
+                <form class="form-floating">
+                    <select formControlName="productId" class="form-control" id="productId" placeholder="Select workingstation">
+                    <option [ngValue]="product.entity_id" *ngFor="let product of products">{{product.entity_id}}</option>
+                  </select>
+                    <label for="productId">Arbeitsstation</label>
+                    <div *ngIf="form.get('productId').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Soll-Taktzeit ein!</div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-6 mt-md-0 mt-4">
+                <form class="form-floating">
+                    <input formControlName="planParts" type="number" class="form-control" id="planParts" placeholder="Programmversion" value="1">
+                    <label for="planParts">Stückzahlen</label>
+                    <div *ngIf="form.get('planParts').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Programmversion ein!</div>
+                </form>
+            </div>
+            <div class="col-md-6 mt-md-0 mt-4">
+                <form class="form-floating">
+                    <input formControlName="deadline" type="datetime-local" class="form-control" id="deadline" placeholder="Prozesslänge">
+                    <label for="deadline">Deadline</label>
+                    <div *ngIf="form.get('deadline').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Prozesslänge ein!</div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-md-2 mt-4">
+            <div class="col-md-12">
+                <form class="form-floating">
+                    <select formControlName="robotId" class="form-control" id="robotId" placeholder="Select workingstation">
+                      <option [ngValue]="robot.id" *ngFor="let robot of robots">{{robot.id}}</option>
+                    </select>
+                    <label for="robotId">Arbeitsstation</label>
+                    <div *ngIf="form.get('robotId').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Soll-Taktzeit ein!</div>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="offset-md-6 col-md-3 col-6">
+                <button routerLink="/overview" class=" btn btn-secondary form-control">Zurück</button>
+            </div>
+            <div class="col-md-3 col-6">
+                <button class="btn btn-primary form-control" (click)="onGenerate()">Generieren</button>
+            </div>
+        </div>
+    </form>
+</div>
+<h5 class="mt-4">Request:</h5>
+<request-form [requestJson]="orderJson" (sendRequestEmitter)="onSendRequest()"></request-form>
+<!--  -->

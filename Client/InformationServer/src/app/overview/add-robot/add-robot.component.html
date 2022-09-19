@@ -1,1 +1,27 @@
-<p>add-robot works!</p>
+<div class="row text-center mt-5">
+    <h2>Auftrag hinzufügen</h2>
+</div>
+<div>
+    <form [formGroup]="form" id="createForm" class="needs-validation">
+        <div class="row mt-4">
+            <div class="col-sm-12 col-md-12 ">
+                <form class="form-floating">
+                    <input formControlName="robotId" type="text" class="form-control" id="Id" placeholder="ID" required>
+                    <label for="Id">ID</label>
+                    <div *ngIf="form.get('robotId').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine ID ein!</div>
+                </form>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="offset-md-6 col-md-3 col-6">
+                <button routerLink="/overview" class=" btn btn-secondary form-control">Zurück</button>
+            </div>
+            <div class="col-md-3 col-6">
+                <button class="btn btn-primary form-control" (click)="onAddClicked()">Generieren</button>
+            </div>
+        </div>
+    </form>
+</div>
+<h5 class="mt-4">Request:</h5>
+<request-form [requestJson]="robotJson" (sendRequestEmitter)="sendRequestClicked()"></request-form>
+<!--  -->

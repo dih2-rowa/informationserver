@@ -21,7 +21,7 @@ enum OrderStatus{
 })
 export class ProductsComponent implements OnInit {
 
-  
+
   products :ProductPage[] = []
   searchInput:string = "";
   qrCodeClicked:boolean =false;
@@ -30,13 +30,12 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductsService, private orderService: OrdersService, private router: Router) { }
 
   ngOnInit(): void {
-    this.productService.get_products().subscribe((response) =>{
+    this.productService.get_productPages().subscribe((response) =>{
       this.products = response;
     });
-    
   }
 
-  
+
 
   onClickDrop(id:string):void{
     const dropdownField = document.getElementById('drop-' +id);

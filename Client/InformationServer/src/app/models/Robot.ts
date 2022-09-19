@@ -1,3 +1,5 @@
+import { FiwareObject } from "./Products";
+
 export interface Robot{
   id:string;
   version: number;
@@ -8,4 +10,18 @@ export interface Robot{
   drawer2Status: string;
   restServiceLife: number;
   orderID: string;
+}
+
+
+export interface FiwareRobot{
+  id: string;
+  type:string;
+  version: FiwareObject,
+  robotSpeed: FiwareObject,
+  robotRunning: FiwareObject,
+  restServiceLife:FiwareObject,
+  drawer2Status: FiwareObject,
+  drawer1Status: FiwareObject,
+  currCycleTime: FiwareObject,
+  orderId: FiwareObject
 }

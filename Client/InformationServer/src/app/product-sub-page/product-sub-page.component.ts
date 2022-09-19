@@ -12,14 +12,14 @@ import { ProductsService } from '../services/products.service';
   styleUrls: ['./product-sub-page.component.scss']
 })
 export class ProductSubPageComponent implements OnInit {
-  product:string = "";
+  product_id:string = "";
   productPage:ProductPage;
   baseUrl: string = environment.baseUrl;
   constructor(private route:ActivatedRoute, private productService: ProductsService, private router:Router) { }
 
   ngOnInit(): void {
-    this.route.params.subscribe((params:Params) => this.product = params['id']);
-    this.productService.get_product(this.product).subscribe((response) =>{
+    this.route.params.subscribe((params:Params) => this.product_id = params['id']);
+    this.productService.get_product(this.product_id).subscribe((response) =>{
       console.log(response)
         this.productPage = response;
     });

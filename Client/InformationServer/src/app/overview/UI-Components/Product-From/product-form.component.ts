@@ -16,44 +16,22 @@ export class ProductFormComponent implements OnInit{
   productJson:string;
   markedAsTouched: boolean = false;
 
-  constructor(private readonly formBuilder: FormBuilder){
+  constructor(){
 
-    this.form = this.formBuilder.group({
-        productName: ['', [Validators.required]],
-        programName: ['', [Validators.required]],
-        programVersion: ['', [Validators.required]],
-        processingLength: ['', [Validators.required]],
-        planCycleTime: ['', [Validators.required]],
-        pdf: ['', [Validators.required]],
-    })
+
 
   }
 
   ngOnInit(): void {
-
-  }
-
-  onAddClicked(){
-    if(this.form.valid){
-      this.product = {
-        entity_id: this.form.get('productName').value,
-        programname: this.form.get('programName').value,
-        programversion: this.form.get('productName').value,
-        processinglength: this.form.get('productName').value,
-        plancycletime: this.form.get('planCycleTime').value,
-        pdf: this.form.get('pdf').value,
-        orderstodo: null,
-        orderrunning: null,
-        ordersfinished: null,
-        versiononrobot: false,
-      }
-      this.generate.emit(this.product);
-
-
-      console.log(this.product);
+    if(this.product){
+      console.log(this.product)
+      this.form.patchValue(this.product);
+    }else{
+      console.log('No product');
     }
-
   }
+
+
 
   onSaveProduct(){
 

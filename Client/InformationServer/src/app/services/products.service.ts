@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import {Product, ProductPage} from '../models/Products'
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,29 +12,27 @@ export class ProductsService {
   constructor(private http:HttpClient, private router: Router) { }
 
   baseUrl = environment.baseUrl;
-  products:ProductPage[] = [];
-  productToReturn:any = {};
-  get_products(){
+  get_productPages():Observable<ProductPage[]>{
     // return this.http.get('http://127.0.0.1:5000/robots');
     console.log('Going here');
-    return this.http.get<ProductPage[]>(this.baseUrl + '/products/get');
+    return this.http.get<ProductPage[]>(this.baseUrl + '/products/Pages');
 
   }
 
-  get_product(id:string){
+  get_products():Observable<Product[]>{
+    return this.http.get<Product[]>(this.baseUrl + '/products/get');
+  }
+
+  get_product(id:string): Observable<ProductPage>{
     return this.http.get<ProductPage>(this.baseUrl+ '/products/product' + id);
   }
 
-  add_product(productName:string, productVersion: string, planCycleTime: string, pdf:File){
-    const product = new FormData();
-    product.append("productName", productName);
-    product.append("productVersion", productVersion);
-    product.append("planCycleTime", planCycleTime);
-    product.append("pdf", pdf);
-    this.http.post(this.baseUrl + '/product/add',product).subscribe(response => {
-      this.router.navigate(["/"]);
-    });
+  delete_product(id:string){
+     return this.http.delete(this.baseUrl + '/products/'+id);
+    //  this.router.navigateByUrl('/overview');
   }
+
+
 
 
 }
