@@ -18,7 +18,8 @@ export class ProductSubPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params:Params) => this.product_id = params['id']);
-    this.fiwareService.getProduct(this.product_id).subscribe((fiwareProduct: FiwareProduct) => this.productPage = {
+    this.fiwareService.getProduct(this.product_id).subscribe((fiwareProduct: FiwareProduct) => {
+      this.productPage = {
       product: {
         entity_id: fiwareProduct.id,
         programname:fiwareProduct.programName.value,
@@ -32,9 +33,9 @@ export class ProductSubPageComponent implements OnInit {
         orderstodo: null
       },
       orderrunning: null,
-      orderstodo: null,
-      ordersfinished:null,
-    })
+      orderstodo: [],
+      ordersfinished:[],
+    };
 
     this.fiwareService.getProducts().subscribe((res: any) => {
       res.forEach((fiwareOrder:FiwareOrder) => {
@@ -73,7 +74,7 @@ export class ProductSubPageComponent implements OnInit {
                     time_index: 0
                   })
                 }else if(fiwareOrder.orderStatus.value === 'Finished'){
-                  this.productPage.orderstodo.push({
+                  this.productPage.ordersfinished.push({
                     entity_id: fiwareOrder.id,
                     planparts: fiwareOrder.planParts.value,
                     prodparts: fiwareOrder.prodParts.value,
@@ -94,6 +95,9 @@ export class ProductSubPageComponent implements OnInit {
       });
       console.log(this.productPage.ordersfinished);
     })
+  });
+
+
   }
 
 

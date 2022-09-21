@@ -48,10 +48,10 @@
         </ul>
         <ul class="list-group list-group-horizontal row mt-2 ">
             <li class="list-group-item col-6">Aktueller Auftrag</li>
-            <ng-container *ngIf="productPage?.orderrunning.entity_id">
+            <ng-container *ngIf="productPage?.orderrunning?.entity_id">
                 <li class="list-group-item col-6 text-success">{{productPage?.orderrunning.entity_id}}</li>
             </ng-container>
-            <ng-container *ngIf="!productPage?.orderrunning.entity_id">
+            <ng-container *ngIf="!productPage?.orderrunning?.entity_id">
                 <li class="list-group-item col-6 text-danger">Kein Auftrag</li>
             </ng-container>
 
