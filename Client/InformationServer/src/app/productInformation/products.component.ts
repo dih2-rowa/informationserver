@@ -59,7 +59,6 @@ export class ProductsComponent implements OnInit {
 
       })
 
-      console.log(this.products);
     })
 
 
@@ -84,10 +83,10 @@ export class ProductsComponent implements OnInit {
     this.qrCodeClicked = !this.qrCodeClicked;
   }
 
-  QrScanSuccess(result:string):void{
+  QrScanSuccess($event):void{
     this.qrCodeClicked = false;
     // this.searchInput = result;
-    this.router.navigate(['/products/' +result + '/product-detail'])
+    this.router.navigate(['/products/' +$event + '/product-detail'])
   }
 
   navigateToSubPage(id:string):void{
