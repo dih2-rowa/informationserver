@@ -2,6 +2,8 @@ const app = require("./app");
 const debug = require("debug")("node-angular");
 const http = require("http");
 
+global.__basedir = __dirname;
+
 const normalizePort = val => {
     var port = parseInt(val, 10);
 

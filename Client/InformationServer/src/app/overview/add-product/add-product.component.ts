@@ -6,6 +6,7 @@ import { FiwareService } from 'src/app/services/fiware.service';
 import { FiwareProduct, Product, ProductPage } from 'src/app/models/Products';
 import { Observable } from 'rxjs';
 import { json } from 'express';
+import { FileUploadService } from 'src/app/services/file-upload.service';
 
 @Component({
   selector: 'app-add-product',
@@ -13,6 +14,9 @@ import { json } from 'express';
   styleUrls: ['./add-product.component.scss']
 })
 export class AddProductComponent implements OnInit {
+
+  selectedFiles?:FileList;
+  currentFile?:File;
 
   id:string = '';
   mode: string = "create";
@@ -26,7 +30,7 @@ export class AddProductComponent implements OnInit {
   form: FormGroup;
   productJson:string;
 
-  constructor(private router: Router, private fiwareService: FiwareService, private route: ActivatedRoute, private readonly formBuilder: FormBuilder) {
+  constructor(private router: Router, private fiwareService: FiwareService, private route: ActivatedRoute, private readonly formBuilder: FormBuilder, private uploadService:FileUploadService) {
     this.form = this.formBuilder.group({
       productName: ['', [Validators.required]],
       programName: ['', [Validators.required]],
@@ -54,12 +58,33 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  selectFile(event:any){
+    this.selectedFiles = event.target.files;
+  }
+
+
+  upload(){
+    if(this.selectedFiles){
+      const file: File | null = this.selectedFiles.item(0);
+      if(file){
+        this.currentFile = file;
+
+        this.uploadService.upload(this.currentFile).subscribe();
+      }
+      this.selectedFiles = undefined;
+    }
+
+
+  }
+
   onCancelClick(){
     this.router.navigateByUrl("");
   }
 
   onGenerate(product: Product){
     console.log(product)
+    const pdfarray =this.form.controls['pdf'].value.split('\\')
+    console.log(pdfarray);
       // this.productJson =`{"id": "${product.entity_id}","type": "Product","programName": {"value": "${product.programname}","type": "String"},"programVersion": {"value": ${product.programversion},"type": "Integer"},"VersionOnRobot": {"value": 1,"type": "Integer"},"processingLength": {"value": ${product.processinglength},"type": "Integer"},"planCycleTime": {"value": ${product.plancycletime}, "type": "Integer","pdf": {"value": "${product.pdf}","type": "String"}}}`
       if(this.isUpdate){
         console.log("isUpdate");
@@ -85,7 +110,7 @@ export class AddProductComponent implements OnInit {
             "type": "Integer"
           },
           "pdf": {
-            "value": "1118-Aero-Duct-LH-921-A.pdf",
+            "value": "${pdfarray[pdfarray.length-1]}",
             "type": "String"
           }
         }`
@@ -114,7 +139,7 @@ export class AddProductComponent implements OnInit {
             "type": "Integer"
           },
           "pdf": {
-            "value": "1118-Aero-Duct-LH-921-A.pdf",
+            "value": "${pdfarray[pdfarray.length-1]}",
             "type": "String"
           }
         }`
@@ -125,6 +150,7 @@ export class AddProductComponent implements OnInit {
   sendRequestClicked(){
     if(!this.isUpdate){
       this.fiwareService.addProduct(this.productJson);
+      this.upload();
     }else{
       this.fiwareService.updateProduct(this.productJson, this.product.entity_id);
     }

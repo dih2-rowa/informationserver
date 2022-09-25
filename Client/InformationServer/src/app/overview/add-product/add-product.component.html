@@ -48,7 +48,7 @@
         </div>
         <div class="row mt-md-2 mt-4">
             <div>
-                <input formControlName="pdf" class="form-control " id="pdf" type="file" id="formFile">
+                <input formControlName="pdf" class="form-control " id="pdf" type="file" id="formFile" (change)="selectFile($event)">
                 <div *ngIf="form.get('pdf').invalid && markedAsTouched" for="Id" class="text-danger">Wählen Sie bitte ein PDF aus</div>
             </div>
         </div>

@@ -4,6 +4,7 @@ import { FiwareOrder, Orders } from 'src/app/models/Orders';
 import { FiwareProduct, Product } from 'src/app/models/Products';
 import { FiwareRobot, Robot } from 'src/app/models/Robot';
 import { FiwareService } from 'src/app/services/fiware.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-product-overview',
@@ -12,6 +13,7 @@ import { FiwareService } from 'src/app/services/fiware.service';
 })
 export class ProductOverviewComponent implements OnInit {
 
+  baseUrl: string = environment.baseUrl;
   constructor(private router: Router, private route: ActivatedRoute, private fiwareService:FiwareService){
 
   }
