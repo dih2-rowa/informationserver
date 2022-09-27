@@ -45,8 +45,8 @@
             <tr *ngFor="let product of products ">
                 <th class="col-2">{{product.entity_id}}</th>
                 <th class="col-2">{{product.programversion}}</th>
-                <th class="col-2">{{product.processinglength}}</th>
-                <th class="col-2">{{product.planCycletime}}</th>
+                <th class="col-2">{{product.processinglength}} mm</th>
+                <th class="col-2">{{product.plancycletime}} s</th>
                 <th class="col-2">
                     <a href="{{ baseUrl + '/products/getImage/' + product.pdf}} " target="blank ">
                         <svg width="25 " height="25 " viewBox="0 0 25 25 " fill="none " xmlns="http://www.w3.org/2000/svg ">

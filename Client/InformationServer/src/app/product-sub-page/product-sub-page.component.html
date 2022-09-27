@@ -4,7 +4,7 @@
     </div>
     <div class="card-body">
         <ul class="list-group list-group-horizontal center row">
-            <li class="list-group-item col-6">Programm name</li>
+            <li class="list-group-item col-6">Programmname</li>
             <li class="list-group-item col-6">{{productPage?.product?.programname}}</li>
         </ul>
 
@@ -13,11 +13,8 @@
             <li class="list-group-item col-6">{{productPage?.product?.programversion}}</li>
         </ul>
         <ul class="list-group list-group-horizontal row mt-2">
-            <li class="list-group-item col-6">Version am Roboter?</li>
-            <li class="list-group-item col-6">
-                <input class="form-check-input" type="checkbox" checked disabled *ngIf="productPage?.product?.versiononrobot">
-                <input class="form-check-input" type="checkbox" disabled *ngIf="!productPage?.product?.versiononrobot">
-            </li>
+            <li class="list-group-item col-6">Version am Roboter</li>
+            <li class="list-group-item col-6">{{productPage?.product?.versiononrobot}}</li>
         </ul>
         <ul class="list-group list-group-horizontal row mt-2">
             <li class="list-group-item col-6">Prozesslänge</li>
