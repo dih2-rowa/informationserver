@@ -5,6 +5,7 @@ import { FiwareOrder, Orders } from 'src/app/models/Orders';
 import { FiwareProduct, Product } from 'src/app/models/Products';
 import { FiwareRobot, Robot } from 'src/app/models/Robot';
 import { FiwareService } from 'src/app/services/fiware.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-add-order',
@@ -13,6 +14,12 @@ import { FiwareService } from 'src/app/services/fiware.service';
 })
 export class AddOrderComponent implements OnInit {
 
+  options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
 
   form: FormGroup;
   markedAsTouched: boolean;
@@ -91,10 +98,15 @@ export class AddOrderComponent implements OnInit {
     });
   }
 
+  formatDateTime(date: Date):string{
+
+    return `${date.getFullYear()}-${date.getMonth()}-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+  }
+
   onGenerate(){
       // this.productJson =`{"id": "${product.entity_id}","type": "Product","programName": {"value": "${product.programname}","type": "String"},"programVersion": {"value": ${product.programversion},"type": "Integer"},"VersionOnRobot": {"value": 1,"type": "Integer"},"processingLength": {"value": ${product.processinglength},"type": "Integer"},"planCycleTime": {"value": ${product.plancycletime}, "type": "Integer","pdf": {"value": "${product.pdf}","type": "String"}}}`
       if(!this.isUpdate){
-        console.log(this.form);
+        console.log(this.formatDateTime(new Date(this.form.controls['startTime'].value)));
         this.orderJson=`{
           "id": "${this.form.controls['orderId'].value}",
           "type": "Order",
@@ -115,7 +127,7 @@ export class AddOrderComponent implements OnInit {
             "type": "Integer"
           },
           "startTime": {
-              "value": "${this.form.controls['startTime'].value}",
+              "value": "${(moment(this.form.controls['startTime'].value)).format('YYYY-MM-DD HH:mm:ss')}",
               "type": "Datetime"
           },
           "finishedTime": {
@@ -123,7 +135,7 @@ export class AddOrderComponent implements OnInit {
             "type": "Datetime"
           },
           "deadline": {
-              "value": "${this.form.controls['deadline'].value.toLocaleString('en-US', { hour12: false })}",
+              "value": "${(moment(this.form.controls['deadline'].value)).format('YYYY-MM-DD HH:mm:ss')}",
               "type": "Datetime"
           },
           "orderStatus": {
@@ -146,11 +158,11 @@ export class AddOrderComponent implements OnInit {
             "type": "Integer"
           },
           "deadline": {
-              "value": "${this.form.controls['deadline'].value.toLocaleString('en-US', { hour12: false })}",
+              "value": "${(moment(this.form.controls['deadline'].value)).format('YYYY-MM-DD HH:mm:ss')}",
               "type": "Datetime"
           },
           "startTime": {
-            "value": "${this.form.controls['startTime'].value}",
+            "value": "${(moment(this.form.controls['startTime'].value)).format('YYYY-MM-DD HH:mm:ss')}",
             "type": "Datetime"
           },
           "workingStation": {
