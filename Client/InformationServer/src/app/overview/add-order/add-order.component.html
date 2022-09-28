@@ -37,14 +37,21 @@
                 </form>
             </div>
         </div>
-        <div class="row mt-md-2 mt-4">
-            <div class="col-md-12">
+        <div class="row mt-2 mt-4">
+            <div class="col-md-6 ">
                 <form class="form-floating">
                     <select formControlName="robotId" class="form-control" id="robotId" placeholder="Select workingstation">
                       <option [ngValue]="robot.id" *ngFor="let robot of robots">{{robot.id}}</option>
                     </select>
                     <label for="robotId">Arbeitsstation</label>
                     <div *ngIf="form.get('robotId').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Soll-Taktzeit ein!</div>
+                </form>
+            </div>
+            <div class="col-md-6 mt-md-0 mt-4">
+                <form class="form-floating">
+                    <input formControlName="startTime" type="datetime-local" class="form-control" id="startTime" placeholder="Startzeit">
+                    <label for="startTime">Startzeit</label>
+                    <div *ngIf="form.get('startTime').invalid && markedAsTouched" for="Id" class="text-danger">Geben Sie bitte eine Prozesslänge ein!</div>
                 </form>
             </div>
         </div>

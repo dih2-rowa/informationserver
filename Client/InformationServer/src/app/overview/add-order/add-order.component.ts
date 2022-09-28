@@ -30,6 +30,7 @@ export class AddOrderComponent implements OnInit {
       planParts: ['', [Validators.required]],
       deadline: ['', [Validators.required]],
       robotId: ['', [Validators.required]],
+      startTime: ['', [Validators.required]]
   })
   }
 
@@ -43,6 +44,7 @@ export class AddOrderComponent implements OnInit {
         this.form.controls['planParts'].setValue(fiwareOrder.planParts.value);
         this.form.controls['deadline'].setValue(fiwareOrder.deadline.value);
         this.form.controls['robotId'].setValue(fiwareOrder.workingStation.value);
+        this.form.controls['startTime'].setValue(fiwareOrder.startTime.value);
       });
 
     }
@@ -113,7 +115,7 @@ export class AddOrderComponent implements OnInit {
             "type": "Integer"
           },
           "startTime": {
-              "value": "2022-06-19 11:25:20",
+              "value": "${this.form.controls['startTime'].value}",
               "type": "Datetime"
           },
           "finishedTime": {
@@ -121,7 +123,7 @@ export class AddOrderComponent implements OnInit {
             "type": "Datetime"
           },
           "deadline": {
-              "value": "${this.form.controls['deadline'].value}",
+              "value": "${this.form.controls['deadline'].value.toLocaleString('en-US', { hour12: false })}",
               "type": "Datetime"
           },
           "orderStatus": {
@@ -144,8 +146,12 @@ export class AddOrderComponent implements OnInit {
             "type": "Integer"
           },
           "deadline": {
-              "value": "${this.form.controls['deadline'].value}",
+              "value": "${this.form.controls['deadline'].value.toLocaleString('en-US', { hour12: false })}",
               "type": "Datetime"
+          },
+          "startTime": {
+            "value": "${this.form.controls['startTime'].value}",
+            "type": "Datetime"
           },
           "workingStation": {
             "value": "${this.form.controls['robotId'].value}",
