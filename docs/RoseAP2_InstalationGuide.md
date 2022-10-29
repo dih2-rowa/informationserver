@@ -31,6 +31,7 @@ To run Infomation Server, open a repository in Visual Studio code and perform th
 
   
 4.	After install every component find a file named docker-compose.yml  in a folder Client and with a right mouse button choose an option Compose Up. 
+
 ![image](https://user-images.githubusercontent.com/103100980/198825414-b16c4dbe-b154-4fa4-8ee9-d839b81f3715.png)
 
 5.	Server Works, webpage can be visible on localhost:4100
