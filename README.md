@@ -39,7 +39,7 @@ Check the file [getting_started.md](/docs/getting_started.md). And follow steps 
 
 ## How to adapt it?
   - **API:** To adapt the API you have to change the connection string to the database.
-     If the database runs on localhost:4200 you can skip that step.
+     If the database runs on 10.92.80.10:4200 you can skip that step.
   - **Web-Client:** To adapt the Web-Client you have to change the base-Url in both of the environment files in the environments folder.
 
 ## How to deploy it?
@@ -57,7 +57,7 @@ The Information server consists of two big parts:
         self.engine = sa.create_engine('crate://')
 
     Replace 'crate://' with the Connection-String of your database.
-    You don't have to change it when the database is running on localhost:4200.
+    You don't have to change it when the database is running on 10.92.80.10:4200.
     After that you need to navigate to the API-folder and youcan start the API with the following command:
     
         python3 main.py --port 4400

@@ -9,7 +9,7 @@ exports.getproduct = (req, res, next) => {
 
     console.log('Here we go again');
     const id = req.params.id;
-    crate.connect('localhost', 4200);
+    crate.connect('10.92.80.10', 4200);
     crate.execute(`select * from mtrobot_info.etproduct `).then((products) => {
         crate.execute('select * from mtrobot_info.etorder').then((orders) => {
             const productPages = getProductsWithOrdersHelper(products, orders);
@@ -26,20 +26,20 @@ exports.getproduct = (req, res, next) => {
 }
 
 exports.getProducts = (req, res, next) => {
-    crate.connect('localhost', 4200);
+    crate.connect('10.92.80.10', 4200);
     crate.execute('select * from mtrobot_info.etproduct').then((products) => {
         res.status(200).json(products.json);
     })
 }
 
 exports.deleteProduct = (req, res, next) => {
-    crate.connect('localhost', 4200);
+    crate.connect('10.92.80.10', 4200);
     console.log(req.params.id);
     crate.execute(`delete from mtrobot_info.etproduct where mtrobot_info.etproduct.entity_id = '${req.params.id}'`).then(res.status(200));
 }
 
 exports.getProductsWithOrders = (req, res, next) => {
-    crate.connect('localhost', 4200);
+    crate.connect('10.92.80.10', 4200);
     crate.execute('select * from mtrobot_info.etproduct').then((products) => {
         crate.execute('select * from mtrobot_info.etorder').then((orders) => {
             const productPage = getProductsWithOrdersHelper(products, orders);

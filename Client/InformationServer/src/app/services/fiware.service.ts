@@ -23,11 +23,11 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       "fiware-servicepath": "/demo"
      });
 
-    // this.http.get("http://localhost:1026/v2/entities").subscribe(res => {
+    // this.http.get("http://10.92.80.10:1026/v2/entities").subscribe(res => {
     //   console.log(res);
     // })
 
-    return this.http.post("http://localhost:1026/v2/entities" , jsonString ,{headers: this.header} ).subscribe(res => {
+    return this.http.post("http://10.92.80.10:1026/v2/entities" , jsonString ,{headers: this.header} ).subscribe(res => {
       this.router.navigateByUrl('/overview');
     });
 
@@ -38,8 +38,8 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-  //  this.http.get<FiwareProduct[]>("http://localhost:1026/v2/entities", {headers: this.header}).pipe().subscribe(res => console.log(res));
-    return this.http.get<FiwareProduct[]>("http://localhost:1026/v2/entities", {headers: this.header});
+  //  this.http.get<FiwareProduct[]>("http://10.92.80.10:1026/v2/entities", {headers: this.header}).pipe().subscribe(res => console.log(res));
+    return this.http.get<FiwareProduct[]>("http://10.92.80.10:1026/v2/entities", {headers: this.header});
   }
 
   updateProduct(jsonString, productId:string){
@@ -50,7 +50,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       "fiware-servicepath": "/demo"
      });
      console.log(jsonString)
-    this.http.patch("http://localhost:1026/v2/entities/" + productId + '/attrs', jsonString, {headers: this.header}).subscribe(() => console.log('Update successfull'));
+    this.http.patch("http://10.92.80.10:1026/v2/entities/" + productId + '/attrs', jsonString, {headers: this.header}).subscribe(() => console.log('Update successfull'));
     this.router.navigateByUrl('/overview');
   }
 
@@ -59,8 +59,8 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       "fiware-service" : "robot_info",
       "fiware-servicepath": "/demo"
      });
-     console.log("http://localhost:1026/v2/entities/" + id);
-    return this.http.delete<FiwareProduct>("http://localhost:1026/v2/entities/" + id, {headers: this.header}).subscribe(() => console.log('Deleted successful'));
+     console.log("http://10.92.80.10:1026/v2/entities/" + id);
+    return this.http.delete<FiwareProduct>("http://10.92.80.10:1026/v2/entities/" + id, {headers: this.header}).subscribe(() => console.log('Deleted successful'));
   }
 
 
@@ -69,7 +69,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-    return this.http.get<FiwareProduct>(`http://localhost:1026/v2/entities/${id}`, {headers: this.header});
+    return this.http.get<FiwareProduct>(`http://10.92.80.10:1026/v2/entities/${id}`, {headers: this.header});
   }
 
 
@@ -79,7 +79,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-    return this.http.post<Robot>(`http://localhost:1026/v2/entities/`, jsonString, {headers: this.header}).subscribe(() => {
+    return this.http.post<Robot>(`http://10.92.80.10:1026/v2/entities/`, jsonString, {headers: this.header}).subscribe(() => {
       this.router.navigateByUrl('/overview')
     });
   }
@@ -89,8 +89,8 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       "fiware-service" : "robot_info",
       "fiware-servicepath": "/demo"
      });
-     console.log("http://localhost:1026/v2/entities/" + id);
-    return this.http.delete<FiwareRobot>("http://localhost:1026/v2/entities/" + id, {headers: this.header}).subscribe(() => console.log('Deleted successful'));
+     console.log("http://10.92.80.10:1026/v2/entities/" + id);
+    return this.http.delete<FiwareRobot>("http://10.92.80.10:1026/v2/entities/" + id, {headers: this.header}).subscribe(() => console.log('Deleted successful'));
   }
 
   getRobot(id:string){
@@ -98,7 +98,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-    return this.http.get<FiwareRobot>(`http://localhost:1026/v2/entities/${id}`, {headers: this.header});
+    return this.http.get<FiwareRobot>(`http://10.92.80.10:1026/v2/entities/${id}`, {headers: this.header});
   }
 
   updateRobot(jsonString, productId:string){
@@ -108,7 +108,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       "fiware-servicepath": "/demo"
      });
      console.log(jsonString)
-    this.http.patch("http://localhost:1026/v2/entities/" + productId + '/attrs', jsonString, {headers: this.header}).subscribe(() => console.log('Update successfull'));
+    this.http.patch("http://10.92.80.10:1026/v2/entities/" + productId + '/attrs', jsonString, {headers: this.header}).subscribe(() => console.log('Update successfull'));
   }
 
   getRobots(){
@@ -117,7 +117,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-     return this.http.get<FiwareRobot>("http://localhost:1026/v2/entities/");
+     return this.http.get<FiwareRobot>("http://10.92.80.10:1026/v2/entities/");
   }
 
   addOrder(jsonString: string){
@@ -126,7 +126,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-    return this.http.post<Orders>(`http://localhost:1026/v2/entities/`, jsonString, {headers: this.header}).subscribe(() => {
+    return this.http.post<Orders>(`http://10.92.80.10:1026/v2/entities/`, jsonString, {headers: this.header}).subscribe(() => {
       this.router.navigateByUrl('/overview')
     });
   }
@@ -136,8 +136,8 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       "fiware-service" : "robot_info",
       "fiware-servicepath": "/demo"
      });
-     console.log("http://localhost:1026/v2/entities/" + id);
-    return this.http.delete<FiwareOrder>("http://localhost:1026/v2/entities/" + id, {headers: this.header}).subscribe(() => console.log('Deleted successful'));
+     console.log("http://10.92.80.10:1026/v2/entities/" + id);
+    return this.http.delete<FiwareOrder>("http://10.92.80.10:1026/v2/entities/" + id, {headers: this.header}).subscribe(() => console.log('Deleted successful'));
 
   }
 
@@ -146,7 +146,7 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
     'fiware-service' : 'robot_info',
     "fiware-servicepath": "/demo"
    });
-  return this.http.get<FiwareOrder>(`http://localhost:1026/v2/entities/${id}`, {headers: this.header});
+  return this.http.get<FiwareOrder>(`http://10.92.80.10:1026/v2/entities/${id}`, {headers: this.header});
   }
 
   updateOrder(jsonString, productId:string){
@@ -155,6 +155,6 @@ header = new HttpHeaders({'Content-Type':'application/json;'})
       'fiware-service' : 'robot_info',
       "fiware-servicepath": "/demo"
      });
-    this.http.patch("http://localhost:1026/v2/entities/" + productId + '/attrs', jsonString, {headers: this.header}).subscribe(() => this.router.navigateByUrl('/overview'));
+    this.http.patch("http://10.92.80.10:1026/v2/entities/" + productId + '/attrs', jsonString, {headers: this.header}).subscribe(() => this.router.navigateByUrl('/overview'));
   }
 }

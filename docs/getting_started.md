@@ -22,7 +22,7 @@
 
 ## Update demo entity
 
-- Open in your browser http://localhost:4100 
+- Open in your browser http://10.92.80.10:4100 
 - Follow the steps for [Rose-AP2](RoseAP2_ConfigurationGuide.md)
 
 For demo run you don't need a connected robot or RowaConnect.exe open, only make sure that docker is open and every container runs. 

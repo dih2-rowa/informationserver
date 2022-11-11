@@ -34,6 +34,6 @@ To run Infomation Server, open a repository in Visual Studio code and perform th
 
 ![image](https://user-images.githubusercontent.com/103100980/198825414-b16c4dbe-b154-4fa4-8ee9-d839b81f3715.png)
 
-5.	Server Works, webpage can be visible on localhost:4100
+5.	Server Works, webpage can be visible on 10.92.80.10:4100
 
 Terminal should look like this : ![image](https://user-images.githubusercontent.com/103100980/192731321-45c8e88b-3231-46a9-aa1b-e4b4b3da3d2e.png)
