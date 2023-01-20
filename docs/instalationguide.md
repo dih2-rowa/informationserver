@@ -9,7 +9,7 @@ Robosonic is a project where hardware is as important as sotfware. Things you ne
 
 ### Instalation on Windows 
 
-[Installation Video](Installation Manual compressed.mp4)
+- Take a look [Installation Video](Installation Manual compressed.mp4).
 
 Before running this application, it is essential to download some software:
 
