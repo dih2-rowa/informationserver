@@ -37,44 +37,21 @@ Basically, the Information Server consists of 3 software components:
 
 Check the file [getting_started.md](/docs/getting_started.md). And follow steps of every Doku.
 
+## How to install it?
+
+Check the file [How_To_Install.md](/docs/How_To_Install.md) and follow steps.
+
 ## How to adapt it?
-  - **API:** To adapt the API you have to change the connection string to the database.
-     If the database runs on 10.92.80.10:4200 you can skip that step.
-  - **Web-Client:** To adapt the Web-Client you have to change the base-Url in both of the environment files in the environments folder.
+
+Check the file [How_To_Adapt.md](/docs/How_To_Adapt.md) and follow steps.
 
 ## How to deploy it?
-The Information server consists of two big parts:
-  - **API:** To run the api you have to navigate to the API folder. Then run the command:
 
-        docker-compose up
-
-    After that all libraries are installed and you can access the API.
-    If the host or port need to be changed, it is necessary to change the following conde in the main.py file:
-    
-        app.run(host="0.0.0.0", port="5011", debug=True)
-    To create the connection to the database you have to change the following code:
-        
-        self.engine = sa.create_engine('crate://')
-
-    Replace 'crate://' with the Connection-String of your database.
-    You don't have to change it when the database is running on 10.92.80.10:4200.
-    After that you need to navigate to the API-folder and youcan start the API with the following command:
-    
-        python3 main.py --port 4400
-    
-    4400 can be replaced by any port.
-  - **Web-Client:** To run the client you need to navigate to the folder "Client/InformationServer and run following command:
-  
-        docker-compose up
-
-    After that, all libraries are automaticaly installed and the website can be started through docker.
-
+Check the file [How_To_Deploy.md](/docs/How_To_Deploy.md) and follow steps.
 
 ## How to use it?
-  Access the Information-Server on the port where it is deployed.
-  To make use of the QR-Code Scanner the device needs a camera. When you click 'QR Code scannen' the browser ask for permission to access the camera. If you want to make use of it you have to click 'Yes'.
-  The website can be used on large and  on mobile screen sizes.
 
+Check the file [How_To_Use.md](/docs/How_To_Use.md) and follow steps.
 
 ## Environment Restrictions
   
