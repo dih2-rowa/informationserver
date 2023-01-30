@@ -92,5 +92,6 @@ Before running this application, it is essential to download some software:
 To run information server, you need to open Visual Studio Code. In new window find a Clone Git Repository:
 
 ![image](https://user-images.githubusercontent.com/103100980/192727858-c6e1cf64-cf61-4a95-b996-c79961e3c1d4.png)
- , above appear a text field to provide repository URL or pick a repository source:  
+ , above appear a text field to provide repository URL or pick a repository source:  ![image](https://user-images.githubusercontent.com/102011176/215492395-86d9cac7-c3fe-4679-9d4d-be4d7ecc4063.png)
+
 
