@@ -31,11 +31,6 @@ Basically, the Information Server consists of 3 software components:
 
 ### GUI
   The graphical user interface is written with the Angular-framework. This allows to write the website a reusable way. The website is designed with HTML and SCSS. Typescript is used to request the data from the api and parse it down to the HTML-template.
-  
-
-## How to install it?
-
-Check the file [getting_started.md](/docs/getting_started.md). And follow steps of every Doku.
 
 ## How to install it?
 
