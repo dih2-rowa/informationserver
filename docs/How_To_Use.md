@@ -1,6 +1,6 @@
 ### Introduction
 
-Rose-AP2 is a web server which shows data from Rose-AP1 in user friendly way. It has also an availability to add, delete and update entities such as robot, order or product, the way, that no knowledge of programming is needed. 
+The information server is a web server which shows data from the orien context broker in user friendly way. It has also an availability to add, delete and update entities such as robot, order or product, the way, that no knowledge of programming is needed. 
 When webpage is firstly open, it shows nothing except menu bar. It’s normal. Firstly, some data must be added.
 
 
@@ -33,5 +33,6 @@ To modify entity just click on blue button: ![image](https://user-images.githubu
 
 ### QR code
 
+Access the Information-Server on the port where it is deployed. To make use of the QR-Code Scanner the device needs a camera. When you click 'QR Code scannen' the browser ask for permission to access the camera. If you want to make use of it you have to click 'Yes'. The website can be used on large and on mobile screen sizes.
 To add working QR code, you can use online QR code generator.  For example: https://goqr.me/
 
