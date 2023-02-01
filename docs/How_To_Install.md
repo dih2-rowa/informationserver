@@ -1,5 +1,9 @@
 # Quick Start Guide 
 
+### Installation Video
+
+https://youtu.be/wDH49VZ2l34
+
 ### How to start?
 
 Robosonic is a project where hardware is as important as sotfware. Things you need to start working with this software are:
