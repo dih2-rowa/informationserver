@@ -2,7 +2,7 @@
 
 ### Installation Video
 
-https://youtu.be/wDH49VZ2l34
+[https://youtu.be/wDH49VZ2l34](https://www.youtube.com/watch?v=8S9uoy25lDg)
 
 ### How to start?
 
